@@ -38,7 +38,7 @@ def get_all_skills(connection):
     all_skills={}
     for row in records:
         all_skills[row[0]]=row[1]
-    print("All skills",all_skills)
+    #print("All skills",all_skills)
     return all_skills
 
 
@@ -58,14 +58,16 @@ def get_resume_skills(connection):
 
 def get_emailing_list(connection):
     email_id_list={}
-    sql_select_Query3="SELECT resume_id,user_email from user_master um join user_resume ur on um.user_id=ur.user_id"
+    sql_select_Query3="SELECT resume_id,user_email,user_fname from user_master um join user_resume ur on um.user_id=ur.user_id"
     cursor=connection.cursor()
     cursor.execute(sql_select_Query3)
     records_email=cursor.fetchall()
     for row in records_email:
-        email_id_list[row[0]]=row[1]
-    print("Resume id and email id",email_id_list)
+        email_id_list[row[0]]=[row[1],row[2]]
+    #print("Resume id and email id",email_id_list)
     return email_id_list
+
+job_details={}
 
 def get_job_description(keyword,no_of_jobs_to_retrieve,data):
     username="srijas.alerts@gmail.com"
@@ -124,6 +126,9 @@ def get_job_description(keyword,no_of_jobs_to_retrieve,data):
          show_more_button=browser.find_element_by_xpath("//button[contains(@aria-label,'Click to see more description')]")
          show_more_button.click()
          list_ele=browser.find_elements_by_xpath("//article//li")
+         job_title=browser.find_element_by_xpath("//h1[@class='t-24 t-bold']").text
+         company_details=browser.find_element_by_xpath("//span[@class='jobs-unified-top-card__subtitle-primary-grouping mr2 t-black']").find_element_by_xpath('//span[1]').text
+         job_details[url]=[job_title,company_details]
         ############for each job lisitng loop through all list items and add the text######################
          data=[]
          datastr=""
@@ -136,16 +141,13 @@ def get_job_description(keyword,no_of_jobs_to_retrieve,data):
          if(count==no_of_jobs_to_retrieve):
              break
          final[url]=datastr
-    #     print(datastr,url,final)
+         #print("------/n",final,"/n-------")
     
     
     #print(resume_skills,final,connection,all_skills,match_threshold)
     
     final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,final,connection,all_skills,match_threshold)
     return final_result
-
-
-
 
 
 
@@ -160,8 +162,8 @@ if __name__ =='__main__':
     #print(resume_skills)
     email_id_list = get_emailing_list(connection)
    # print(email_list)
-    final_result = get_job_description("Software Engineer",5,data)
-    print(final_result)
+    final_result = get_job_description("Software Engineer",2,data)
+    #print("\n final_result -------\n",final_result,"\n")
 
 
 ##########################################################EMAIL SERVICE######################################################################
@@ -175,23 +177,31 @@ password = ""
 sender = "srijas.alerts@gmail.com"
 for key in final_result:
      if key in email_id_list:
-         receiver = email_id_list[key]
-         print(receiver)
+         receiver = email_id_list[key][0]
+         list_of_curr_links = final_result[key]
+         #print(receiver)
          msg = MIMEMultipart()
          msg['From'] = sender
          msg['To'] = receiver
-         msg['Subject'] = 'Job Lisitngs'
-         body = """Hi, \n PFA the attached list of jobs that match your resume \n"""
-         temp_str = ""
-         list_of_curr_links = final_result[key]
-         counter = 1
-         for link in list_of_curr_links:
-             temp_str += (str(counter) + ".  " + link + '\n')
-             counter += 1
-         body += temp_str
-         msg.attach(MIMEText(body, 'plain'))
-         text = msg.as_string()
+         msg['Subject'] = 'SRIJAS - Job List'
 
+         body = """\n Hi """+ email_id_list[key][1] +""",\n Good News !! \n We have found """+str(len(list_of_curr_links)) +""" job that match your resume \n"""
+
+         msg.attach(MIMEText(body, 'plain'))
+
+         temp_body =""
+         html_start = """<html><head></head><body><p><ol>"""
+         for link in list_of_curr_links:
+             temp_body +="<li>"+ job_details[link][0] + " " + job_details[link][1] + "<a href=\""+ link + "\"> Click to Apply </a>"
+         html_end= """</ol></p></body> </html>"""
+
+         html= html_start + temp_body + html_end
+
+         msg.attach( MIMEText(html, 'html'))
+
+         msg.attach(MIMEText("\n\n Regards, \nTeam SRIJAS", 'plain'))
+         text = msg.as_string()
+        
          try:
               server = smtplib.SMTP(smtp_server, port)
               server.connect(smtp_server,port)
