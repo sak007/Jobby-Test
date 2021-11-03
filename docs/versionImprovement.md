@@ -6,6 +6,6 @@
 version 1:
   <img src = https://user-images.githubusercontent.com/32881355/140088486-3ac2dd5a-ec0e-40fe-be9e-3883f32e8713.png />
 version 2:
-  ![image](https://user-images.githubusercontent.com/32881355/140088347-8491f35b-172a-43d2-a6de-b0e399145052.png)
+  <img src = https://user-images.githubusercontent.com/32881355/140088347-8491f35b-172a-43d2-a6de-b0e399145052.png />
 
 </ul>
