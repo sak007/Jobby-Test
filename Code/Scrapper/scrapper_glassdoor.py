@@ -56,26 +56,28 @@ def get_resume_id_skills(connection):
 
 # ======================= fetch user email ids ==================================
 def get_email_id_users(connection):
-    query2 = "select r.resume_id,u.user_email from user_resume r join user_master u on r.user_id=u.user_id"
+    query2 = "select r.resume_id,u.user_email,u.user_fname from user_resume r join user_master u on r.user_id=u.user_id"
     cursor = connection.cursor()
     cursor.execute(query2)
     details = cursor.fetchall()
     email_dict = {}
     for row in details:
         if row[0] in email_dict:
-            email_dict[row[0]].append(row[1])
+            email_dict[row[0]].append([row[1],row[2]])
         else:
-            email_dict[row[0]] = [row[1]]
+            email_dict[row[0]] = [row[1],row[2]]
     return email_dict        
 
 # =========================== get job description =================================================================
 
 final_dict = {}
 threshold = 1
+job_details={}
+
 def get_job_description(keyword,num_jobs,verbose):
      options = Options()
      options.add_argument("--window-size-1920,1200")
-     options.add_argument('--headless')
+     options.headless= True
      options.add_argument('--no-sandbox')
      options.add_argument('--disable-dev-shm-usage')
      driver  =  webdriver.Chrome (options=options,executable_path=ChromeDriverManager().install())
@@ -85,7 +87,7 @@ def get_job_description(keyword,num_jobs,verbose):
      c=0
      job_buttons = driver.find_elements_by_xpath('.//a[@class = "jobLink job-search-key-1rd3saf eigr9kq1"]')  #jl for Job Listing. These are the buttons we're going to click.
      time.sleep(2)
-     print(len(job_buttons))
+     #print(len(job_buttons))
      for text in job_buttons:
          if text.get_attribute('href'):                       ### get all the job postings URL's
             job_urls.append(text.get_attribute('href'))
@@ -102,6 +104,10 @@ def get_job_description(keyword,num_jobs,verbose):
              button.click()
              job_description = driver.find_element_by_xpath('//*[@id="JobDescriptionContainer"]/div[1]').text
              jobs.append(job_description)
+             job_title=driver.find_element_by_xpath("//div[@class='css-17x2pwl e11nt52q6']").text
+             company_details=driver.find_element_by_xpath("//div[@class='css-16nw49e e11nt52q1']").text
+             job_details[i]=[job_title,company_details]
+             #job_details[url]=["job_title","company_details"]
              final_dict[i] = job_description
      return final_dict        
 
@@ -110,13 +116,13 @@ if __name__ =='__main__':
     properties = open('parameters.json')
     connection = db_connect(properties)
     final_skills = get_total_skills(connection)
-    print(final_skills)
+   #print(final_skills)
     mapping_dict = get_resume_id_skills(connection)
-    print(mapping_dict)
+    #print(mapping_dict)
     email_dict = get_email_id_users(connection)
-    print(email_dict)
+    #print(email_dict)
     final_dict = get_job_description("Software Engineer",5,False)
-    print(final_dict)
+    #print(final_dict)
     
     
 # ================= send email to users======================================================
@@ -132,22 +138,33 @@ if __name__ =='__main__':
     sender = "srijas.alerts@gmail.com"
     for key in total:
         if key in email_dict:
-            receiver = ''.join(email_dict[key])
+            receiver = ''.join(email_dict[key][0])
+            
+
+            list_of_curr_links = total[key]
             print(receiver)
             msg = MIMEMultipart()
             msg['From'] = sender
             msg['To'] = receiver
-            msg['Subject'] = 'JOB Listing'
-            body = """Hi \n PFA the attached list of jobs that match your resume \n """
-            temp_str = ""
-            list_curr_links = total[key]
-            counter=1
-            for link in list_curr_links:
-                temp_str+= (str(counter) + link + '\n')
-                counter+=1
-            body+=temp_str
+            msg['Subject'] = 'SRIJAS - Job List'
+
+            body = """\n Hi """+ email_dict[key][1] +""",\n Good News !! \n We have found """+str(len(list_of_curr_links)) +""" job that match your resume \n"""
+
             msg.attach(MIMEText(body, 'plain'))
+
+            temp_body =""
+            html_start = """<html><head></head><body><p><ol>"""
+            for link in list_of_curr_links:
+                temp_body +="<li>"+ job_details[link][0] + " " + job_details[link][1] + "<a href=\""+ link + "\"> Click to Apply </a>"
+            html_end= """</ol></p></body> </html>"""
+
+            html= html_start + temp_body + html_end
+
+            msg.attach( MIMEText(html, 'html'))
+
+            msg.attach(MIMEText("\n\n Regards, \nTeam SRIJAS", 'plain'))
             text = msg.as_string()
+            
         
         try:
             server = smtplib.SMTP(smtp_server, port)
