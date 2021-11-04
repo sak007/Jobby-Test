@@ -11,7 +11,7 @@
 |1|Docs: what: point descriptions of each class/function (in isolation)  | https://github.com/SmayanaReddy/SRIJAS/blob/main/docs/Glassdoor%20Scrapper%20Documentation.pdf|
 |.5|Number of commits: by different people  | https://github.com/SmayanaReddy/SRIJAS/graphs/commit-activity |
 |1|issues are being closed |https://github.com/SmayanaReddy/SRIJAS/issues?q=is%3Aissue+is%3Aclosed|
-|.5|issues are discussed before they are closed | even if you discuss in slack, need a summary statement here|
+|.5|issues are discussed before they are closed | All the issues were discussed in our whatsapp group before they were closed. All the team members validated the changes before the closing was approved.|
 |.5|Use of syntax checkers. |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/main.yml|
 |1|Issues reports: there are many  |https://github.com/SmayanaReddy/SRIJAS/issues |
 |.5|Use of code formatters. |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/code_formatter.yml|
