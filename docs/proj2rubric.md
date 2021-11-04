@@ -16,7 +16,7 @@
 |1|Issues reports: there are many  | |
 |.5|Use of code formatters. | config files in GH showing your this formatter's config|
 |.5|Use of style checkers | config files in GH showing your config|
-|.5|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code. | |
+|.5|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code. | https://github.com/SmayanaReddy/SRIJAS |
 |.5|test cases exist  | dozens of tests and those test cases are more than 30% of the code base|
 |.5|Use of code coverage  | config files in GH|
 |.5|other automated analysis tools  | config files in GH|
