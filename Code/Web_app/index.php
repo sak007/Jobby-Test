@@ -79,10 +79,7 @@ $conn->close();
       <label for="inputLocation">Location</label>
       <input type="text" name="location" class="form-control" id="location" placeholder="Enter location" required>
     </div>
-    <div class="form-group  col-4">
-      <label for="inputLocation">Location</label>
-      <input type="text" name="location" class="form-control" id="location" placeholder="Enter location" required>
-    </div>
+  
 
     <div class="col-auto my-1 col-4">
       <label for="inputJobTypeId">Type Of Job You Are Looking For: </label>
