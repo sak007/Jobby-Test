@@ -19,7 +19,7 @@
 |.5|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code. |https://github.com/SmayanaReddy/SRIJAS |
 |.5|test cases exist  |https://github.com/SmayanaReddy/SRIJAS/tree/main/tests|
 |.5|Use of code coverage  |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/code_cov.yml|
-|.5|other automated analysis tools  | config files in GH|
+|.5|other automated analysis tools  | 1. https://github.com/SmayanaReddy/SRIJAS/actions/workflows/close_as_a_feature.yml 2.https://github.com/SmayanaReddy/SRIJAS/actions/workflows/Respost.yml|
 |.5|test cases:.a large proportion of the issues related to handling failing cases. |https://github.com/SmayanaReddy/SRIJAS/issues|
 |.5|test cases are routinely executed | https://github.com/SmayanaReddy/SRIJAS/blob/main/.travis.yml|
 |1|Documentation describing how this version improves on the older version|https://github.com/SmayanaReddy/SRIJAS/blob/main/docs/versionImprovement.md
