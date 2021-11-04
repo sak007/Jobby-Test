@@ -12,7 +12,7 @@
 |.5|Number of commits: by different people  | https://github.com/SmayanaReddy/SRIJAS/graphs/commit-activity |
 |1|issues are being closed |https://github.com/SmayanaReddy/SRIJAS/issues?q=is%3Aissue+is%3Aclosed|
 |.5|issues are discussed before they are closed | even if you discuss in slack, need a summary statement here|
-|.5|Use of syntax checkers. | config files iin GH showing this checker's config|
+|.5|Use of syntax checkers. |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/main.yml|
 |1|Issues reports: there are many  |https://github.com/SmayanaReddy/SRIJAS/issues |
 |.5|Use of code formatters. |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/code_formatter.yml|
 |.5|Use of style checkers |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/style_checker.yml|
@@ -21,7 +21,7 @@
 |.5|Use of code coverage  |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/code_cov.yml|
 |.5|other automated analysis tools  | config files in GH|
 |.5|test cases:.a large proportion of the issues related to handling failing cases. |https://github.com/SmayanaReddy/SRIJAS/issues|
-|.5|test cases are routinely executed | e.g. travis-com.com or github actions or something|
+|.5|test cases are routinely executed | https://github.com/SmayanaReddy/SRIJAS/blob/main/.travis.yml|
 |1|Documentation describing how this version improves on the older version|https://github.com/SmayanaReddy/SRIJAS/blob/main/docs/versionImprovement.md
 |3|This version is a little(1), some(2), much(3) improved on the last version.|Tutor's assessment.| 
 |16| Total|
