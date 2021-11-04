@@ -14,11 +14,11 @@
 |.5|issues are discussed before they are closed | even if you discuss in slack, need a summary statement here|
 |.5|Use of syntax checkers. | config files iin GH showing this checker's config|
 |1|Issues reports: there are many  |https://github.com/SmayanaReddy/SRIJAS/issues |
-|.5|Use of code formatters. | config files in GH showing your this formatter's config|
-|.5|Use of style checkers | config files in GH showing your config|
+|.5|Use of code formatters. |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/code_formatter.yml|
+|.5|Use of style checkers |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/style_checker.yml|
 |.5|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code. |https://github.com/SmayanaReddy/SRIJAS |
 |.5|test cases exist  |https://github.com/SmayanaReddy/SRIJAS/tree/main/tests|
-|.5|Use of code coverage  | config files in GH|
+|.5|Use of code coverage  |https://github.com/SmayanaReddy/SRIJAS/actions/workflows/code_cov.yml|
 |.5|other automated analysis tools  | config files in GH|
 |.5|test cases:.a large proportion of the issues related to handling failing cases. | if a test case fails, open an issue and fix it|
 |.5|test cases are routinely executed | e.g. travis-com.com or github actions or something|
