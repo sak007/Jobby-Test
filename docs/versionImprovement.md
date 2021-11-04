@@ -1,7 +1,7 @@
 
 <h3> Improved the overall structure of the email response that the user would be receiving</h3>
 <ul>
-<li> Placed hyperlinks in place of unreadable, lenghty URLs to improve the compactness of the mail. </li>
+<li> Placed hyperlinks in place of unreadable, lengthy URLs to improve the compactness of the mail. </li>
 <li> Added more details regarding the job posting.</li>
 version 1:<br/>
   <img src = https://user-images.githubusercontent.com/32881355/140088486-3ac2dd5a-ec0e-40fe-be9e-3883f32e8713.png width="800"  /><br/>
