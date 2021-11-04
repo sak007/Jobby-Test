@@ -109,6 +109,7 @@ CREATE TABLE user_master (
   user_fname varchar(50) NOT NULL,
   user_lname varchar(50) DEFAULT NULL,
   user_email varchar(50) NOT NULL,
+  location varchar(50) DEFAULT NULL,
   user_preferred_job_id int(11) NOT NULL,
   is_active bit(1) NOT NULL,
   created_by int(11) NOT NULL,
