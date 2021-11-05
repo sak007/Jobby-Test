@@ -24,6 +24,7 @@ jobs:
     - name: Run the tests
       run: |
           cd tests
+          pip install -r requirements.txt
           pytest --cov=./
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
