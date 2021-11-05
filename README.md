@@ -5,20 +5,20 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Github](https://img.shields.io/badge/language-python-red.svg)
 ![GitHub issues](https://img.shields.io/github/issues-raw/SmayanaReddy/SRIJAS)
-![Github closes issues](https://img.shields.io/github/issues-closed-raw/ineelshah/SRIJAS)
-![Github pull requests](https://img.shields.io/github/issues-pr/ineelshah/SRIJAS)
-![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/ineelshah/SRIJAS)
+![Github closes issues](https://img.shields.io/github/issues-closed-raw/SmayanaReddy/SRIJAS)
+![Github pull requests](https://img.shields.io/github/issues-pr/SmayanaReddy/SRIJAS)
+![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/SmayanaReddy/SRIJAS)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646667.svg)](https://doi.org/10.5281/zenodo.5646667)
-[![Build Status](https://app.travis-ci.com/ineelshah/SRIJAS.svg?branch=main)](https://app.travis-ci.com/ineelshah/SRIJAS)
-[![codecov](https://codecov.io/gh/ineelshah/SRIJAS/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/ineelshah/SRIJAS)
+[![Build Status](https://app.travis-ci.com/SmayanaReddy/SRIJAS.svg?branch=main)](https://app.travis-ci.com/SmayanaReddy/SRIJAS)
+[![codecov](https://codecov.io/gh/SmayanaReddy/SRIJAS/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/SmayanaReddy/SRIJAS)
 ![version](https://img.shields.io/badge/version-1.0-blue)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/unit_test.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/style_checker.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/main.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/code_formatter.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/code_cov.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/close_as_a_feature.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/Respost.yml/badge.svg)
+![github workflow](https://github.com/SmayanaReddy/SRIJAS/actions/workflows/unit_test.yml/badge.svg)
+![github workflow](https://github.com/SmayanaReddy/SRIJAS/actions/workflows/style_checker.yml/badge.svg)
+![github workflow](https://github.com/SmayanaReddy/SRIJAS/actions/workflows/main.yml/badge.svg)
+![github workflow](https://github.com/SmayanaReddy/SRIJAS/actions/workflows/code_formatter.yml/badge.svg)
+![github workflow](https://github.com/SmayanaReddy/SRIJAS/actions/workflows/code_cov.yml/badge.svg)
+![github workflow](https://github.com/SmayanaReddy/SRIJAS/actions/workflows/close_as_a_feature.yml/badge.svg)
+![github workflow](https://github.com/SmayanaReddy/SRIJAS/actions/workflows/Respost.yml/badge.svg)
 
 
 
@@ -40,10 +40,10 @@ The links of the jobs that matches with the skills in your resume, will be sent 
 This is our submission for the Project for Software Engineering CSC 510 Fall 2021.
 
 ## Infrastructure Description:
-![Infrastructure](https://github.com/ineelshah/SRIJAS/blob/main/images/Infrastructure.jpg)
+![Infrastructure](https://github.com/SmayanaReddy/SRIJAS/blob/main/images/Infrastructure.jpg)
 
 ## Database Schema:
-![DB_Schema](https://github.com/ineelshah/SRIJAS/blob/main/images/DB_Schema.jpg)
+![DB_Schema](https://github.com/SmayanaReddy/SRIJAS/blob/main/images/DB_Schema.jpg)
 
 ## Overview
 <table border="2" bordercolorlight="#b9dcff" bordercolordark="#006fdd">
@@ -105,7 +105,7 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 ---
 1. Clone the Github repository to a desired location on your computer. You will need [git](https://git-scm.com/) to be preinstalled on your machine. Once the repository is cloned, you will then ```cd``` into the local repository.
 ```
-git clone https://github.com/ineelshah/SRIJAS.git
+git clone https://github.com/SmayanaReddy/SRIJAS.git
 cd SRIJAS
 ```
 2. This project uses Python 3, so make sure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All requirements of the project are listed in the ```requirements.txt``` file. Use pip to install all of those.
