@@ -23,7 +23,7 @@
 
 
 
-
+## Phase 2
 
 https://user-images.githubusercontent.com/32881355/140453003-f6133bbc-b7ec-4d4a-bb2e-f6744236884f.mp4
 
@@ -43,7 +43,7 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 ![Infrastructure](https://github.com/SmayanaReddy/SRIJAS/blob/main/images/Infrastructure.jpg)
 
 ## Database Schema:
-![DB_Schema](https://github.com/SmayanaReddy/SRIJAS/blob/main/images/DB_Schema.jpg)
+![DB_Schema](https://github.com/SmayanaReddy/SRIJAS/blob/main/images/database.jpeg)
 
 ## Overview
 <table border="2" bordercolorlight="#b9dcff" bordercolordark="#006fdd">
@@ -68,8 +68,8 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
     <td colspan = "2">
       <p style="color: #FF7A59"> 3.The application matches the job postings with the skills and send email to the user.
       </p>  
-      <a href="./images/email.PNG">
-        <img src="./images/email.PNG">    
+      <a href="./images/Email2.jpeg">
+        <img src="./images/Email2.jpeg">    
       </a>
      </td>
     </td>
