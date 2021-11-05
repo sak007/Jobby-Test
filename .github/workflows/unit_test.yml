@@ -23,4 +23,5 @@ jobs:
       - name: Run tests
         run: |
           cd tests
+          pip install -r requirements.txt
           pytest 
