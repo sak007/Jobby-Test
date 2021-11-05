@@ -9,7 +9,7 @@
 ![Github pull requests](https://img.shields.io/github/issues-pr/SmayanaReddy/SRIJAS)
 ![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/SmayanaReddy/SRIJAS)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646667.svg)](https://doi.org/10.5281/zenodo.5646667)
-[![Build Status](https://img.shields.io/badge/build-passing-green)
+![Build Status](https://img.shields.io/badge/build-passing-green)
 [![codecov](https://codecov.io/gh/SmayanaReddy/SRIJAS/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/SmayanaReddy/SRIJAS)
 ![version](https://img.shields.io/badge/version-1.0-blue)
 ![github workflow](https://github.com/SmayanaReddy/SRIJAS/actions/workflows/unit_test.yml/badge.svg)
