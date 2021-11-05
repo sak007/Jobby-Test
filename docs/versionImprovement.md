@@ -16,5 +16,5 @@
   <li> Altered the DB Schema by adding location attributed column.</li>
   <li> Consequent changes are made to sendData.php file. Storing the location value in user_master.</li>
 </ul>
-<img src = https://user-images.githubusercontent.com/32881355/140442508-807db38d-198b-4b45-b9b8-816e16f212e4.jpeg />
-<img src = https://user-images.githubusercontent.com/32881355/140442568-3f3c04cf-9bb1-4551-b338-cb6d2bfd584f.jpeg />
+<img src = https://user-images.githubusercontent.com/32881355/140442508-807db38d-198b-4b45-b9b8-816e16f212e4.jpeg width = "800"/>
+<img src = https://user-images.githubusercontent.com/32881355/140442568-3f3c04cf-9bb1-4551-b338-cb6d2bfd584f.jpeg width = "800"/>
