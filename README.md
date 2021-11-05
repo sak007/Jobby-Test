@@ -21,7 +21,7 @@
 ![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/Respost.yml/badge.svg)
 
 
-https://user-images.githubusercontent.com/25223347/135366127-f6b741f2-de85-4d64-92c9-cd1d2f518090.mp4
+
 
 
 
