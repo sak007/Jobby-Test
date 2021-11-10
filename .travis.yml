@@ -6,11 +6,15 @@ jobs:
         - "pypy3"  # currently Python 3.6.1,  PyPy 7.1.1-beta0
       # command to install dependencies
       install:
-        - pip install pytest
+        - pip install -r requirements.txt
+        - pip install coverage
+        - pip install codecov
       # command to run tests
       script:
-        - cd tests
-        - pytest
+        - flake8 --ignore=E501,W605
+        - coverage run -m  pytest -q test/
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
     - language: php
       php:
         - 7.4
