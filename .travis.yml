@@ -19,6 +19,6 @@ jobs:
       php:
         - 7.4
       script:
-        - cd /home/travis/build/ineelshah/SRIJAS/Code/Web_app
+        - cd /home/travis/build/sak007/SRIJAS/Code/Web_app
         - php test.php
         
