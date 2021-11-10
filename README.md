@@ -9,7 +9,7 @@
 ![Github pull requests](https://img.shields.io/github/issues-pr/sak007/SRIJAS)
 ![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/sak007/SRIJAS)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646667.svg)](https://doi.org/10.5281/zenodo.5646667)
-![Build Status](https://img.shields.io/badge/build-passing-green)
+[![Build Status](https://app.travis-ci.com/sak007/SRIJAS.svg?branch=main)](https://app.travis-ci.com/github/sak007/SRIJAS)
 [![codecov](https://codecov.io/gh/sak007/SRIJAS/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/sak007/SRIJAS)
 ![version](https://img.shields.io/badge/version-2.0-blue)
 ![github workflow](https://github.com/sak007/SRIJAS/actions/workflows/unit_test.yml/badge.svg)
