@@ -30,7 +30,8 @@ CREATE TABLE user_master (
   user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   user_fname varchar(50) NOT NULL,
   user_lname varchar(50) DEFAULT NULL,
-  user_email varchar(50) NOT NULL,
+  user_email varchar(50) NOT NULL UNIQUE,
+  user_pwd varchar(50) NOT NULL,
   location varchar(50) DEFAULT NULL,
   user_preferred_job_id int NOT NULL REFERENCES job_master (job_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
