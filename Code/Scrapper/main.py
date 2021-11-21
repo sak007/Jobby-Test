@@ -1,16 +1,7 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import time
 import mysql.connector
-from mysql.connector import Error
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import keyword_extraction_modules as ke
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from socket import gaierror
-from webdriver_manager.chrome import ChromeDriverManager
 import smtplib
 import json
 import scrapper_linkedin
@@ -26,10 +17,7 @@ def db_connect(properties):
     user_name = data['user_name']
     password = data['password']
     db_name = data['db_name']
-    connection = mysql.connector.connect(host=server_name,
-                                              database=db_name,
-                                              user=user_name,
-                                              password=password)
+    connection = mysql.connector.connect(host=server_name, database=db_name, user=user_name, password=password)
     return connection
 
 def clean_data(connection):
@@ -98,53 +86,10 @@ if __name__ =='__main__':
     #print(resume_skills)
     email_id_list = get_emailing_list(connection)
    # print(email_list)
-    job_details_linkedin, final_result_linkedin = scrapper_linkedin.get_job_description("Software Engineer", 2, data, all_skills, resume_skills, connection)
+    job_details_linkedin, final_result_linkedin = scrapper_linkedin.get_job_description("Software Developer Intern", "Raleigh", 10, data, all_skills, resume_skills, connection)
     job_details = job_details_linkedin
     final_result = final_result_linkedin
-    #job_details_glassdoor, final_result_glassdoor = scrapper_glassdoor.get_job_description("Software Engineer",5,False)
-    #job_details = dict()
-    #final_result = dict()
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print(job_details)
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print(job_details_linkedin)
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print(job_details_glassdoor)
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #job_details = job_details.update(job_details_linkedin)
-    #print(job_details)
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #job_details = job_details.update(job_details_glassdoor)
-    #print(job_details)
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #print("...................................")
-    #final_result = final_result.update(final_result_linkedin)
-    #final_result = final_result.update(final_result_glassdoor)
-    #print(final_result)
-    #print("\n final_result -------\n",final_result,"\n")
+
 
 
 ##########################################################EMAIL SERVICE######################################################################
@@ -192,9 +137,10 @@ for key in final_result:
               print(login,password)
               server.login(login, password)
               server.sendmail(sender, receiver, text)
-              server.quit()                                                                                # tell the script to report if your message was sent or which errors need to be fixed
+              server.quit()
+              # tell the script to report if your message was sent or which errors need to be fixed
               print('Sent')
-              clean_data(connection)
+              #clean_data(connection)
          except (gaierror, ConnectionRefusedError):
               print('Failed to connect to the server. Bad connection settings?')
          except smtplib.SMTPServerDisconnected as e:
