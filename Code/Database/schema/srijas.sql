@@ -98,6 +98,11 @@ INSERT INTO skill_master(skill_title) VALUES
 ("Spring"),
 ("Jersey"),
 ("Rails"),
+("AngularJS"),
+("Julia"),
+("Bootstrap"),
+("Swift"),
+("Algorithms"),
 ("Fortran");
 
 INSERT INTO job_board (name) VALUES
