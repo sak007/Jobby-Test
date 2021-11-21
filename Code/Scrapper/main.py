@@ -13,6 +13,8 @@ from socket import gaierror
 from webdriver_manager.chrome import ChromeDriverManager
 import smtplib
 import json
+import scrapper_linkedin
+import scrapper_glassdoor
 #######################################################DATABASE OPERATIONS########################################################################################
 
 
@@ -30,6 +32,24 @@ def db_connect(properties):
                                               password=password)
     return connection
 
+def clean_data(connection):
+    cursor = connection.cursor()
+    offsafety = "SET SQL_SAFE_UPDATES = 0"
+    query1 = "delete from user_resume"
+    query2 = "delete from resume_skills"
+    query3 = "delete from resume_master"
+    query4 = "delete from user_master"
+    onsafety = "SET SQL_SAFE_UPDATES = 1"
+    cursor.execute(offsafety)
+    cursor.execute(query1)
+    cursor.execute(query2)
+    cursor.execute(query3)
+    cursor.execute(query4)
+    cursor.execute(onsafety)
+    connection.commit()
+    pass
+
+
 def get_all_skills(connection):
     sql_select_Query = "select DISTINCT skill_id,skill_title from skill_master"
     cursor=connection.cursor()
@@ -43,7 +63,7 @@ def get_all_skills(connection):
 
 
 def get_resume_skills(connection):
-    sql_select_Query2="select  resume_id,skill_id from resume_skills where is_active=1"
+    sql_select_Query2="select  resume_id,skill_id from resume_skills"
     cursor=connection.cursor()
     cursor.execute(sql_select_Query2)
     records2=cursor.fetchall()
@@ -54,7 +74,7 @@ def get_resume_skills(connection):
         else:
             resume_skills[row[0]]=[row[1]]
     return resume_skills
-        
+
 
 def get_emailing_list(connection):
     email_id_list={}
@@ -67,90 +87,6 @@ def get_emailing_list(connection):
     #print("Resume id and email id",email_id_list)
     return email_id_list
 
-job_details={}
-
-def get_job_description(keyword,no_of_jobs_to_retrieve,data):
-    username="srijas.alerts@gmail.com"
-    pwd=data['linked_in_pwd']
-    no_of_jobs_to_retrieve=5
-    count=0
-    searchquery="Software Engineer"
-    options = Options()
-    options.add_argument("--window-size=1920,1200")
-    options.headless= True
-    options.add_argument('--nosandbox')
-    options.add_argument('--disable-dev-shm-usage')    
-    browser = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
-    match_threshold=1
-    
-    ################################Sign IN#################################################
-    browser.get('https://www.linkedin.com/checkpoint/rm/sign-in-another-account?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin')
-    username_ip=browser.find_element_by_id('username')
-    username_ip.send_keys(username)
-    pwd_ip=browser.find_element_by_id('password')
-    pwd_ip.send_keys(pwd)
-    sign_in_button=browser.find_element_by_xpath("//button[@data-litms-control-urn='login-submit']")
-    sign_in_button.click();
-    
-    
-    ######################################################## traverse to job lisitng page #########################
-    browser.get('https://www.linkedin.com/jobs/jobs-in-raleigh-nc?trk=homepage-basic_intent-module-jobs&position=1&pageNum=0')
-    weblement = WebDriverWait(browser, 10000).until(
-        EC.presence_of_element_located((By.XPATH, "//input[contains(@id,'jobs-search-box-keyword-id')]"))
-    )
-    job_description=browser.find_element_by_xpath("//input[contains(@id,'jobs-search-box-keyword-id')]").send_keys(searchquery)
-    #inserting job filter value
-    search_button=browser.find_element_by_class_name("jobs-search-box__submit-button")
-    search_button.click()
-    time.sleep(3)#give time to load search query results
-    
-    ############################################scroll to the bottom of the page#############################################
-    recentList = browser.find_elements_by_xpath("//section[@aria-label='pagination']")
-    for list in recentList :
-            browser.execute_script("arguments[0].scrollIntoView();", list )
-    time.sleep(5)
-    ####################################retrieve job links####################################################
-    job_cards=browser.find_elements_by_xpath("//a[@class='disabled ember-view job-card-container__link job-card-list__title']")
-    href_arr=[]
-    for i in job_cards:
-        href_arr.append(i.get_attribute("href"))
-    #print(len(href_arr))
-    
-     ################looping through every job listing to scrape relevant data##################################
-    
-    final={}
-    listele=[]
-    for url in href_arr:
-         browser.get(url)
-         time.sleep(5)
-         show_more_button=browser.find_element_by_xpath("//button[contains(@aria-label,'Click to see more description')]")
-         show_more_button.click()
-         list_ele=browser.find_elements_by_xpath("//article//li")
-         job_title=browser.find_element_by_xpath("//h1[@class='t-24 t-bold']").text
-         company_details=browser.find_element_by_xpath("//span[@class='jobs-unified-top-card__subtitle-primary-grouping mr2 t-black']").find_element_by_xpath('//span[1]').text
-         job_details[url]=[job_title,company_details]
-        ############for each job lisitng loop through all list items and add the text######################
-         data=[]
-         datastr=""
-         for li in list_ele:
-             data.append(li.text)
-         for val in data:
-             datastr+=val + " "
-         time.sleep(5)
-         count+=1
-         if(count==no_of_jobs_to_retrieve):
-             break
-         final[url]=datastr
-         #print("------/n",final,"/n-------")
-    
-    
-    #print(resume_skills,final,connection,all_skills,match_threshold)
-    
-    final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,final,connection,all_skills,match_threshold)
-    return final_result
-
-
-
 
 if __name__ =='__main__':
     properties = open('parameters.json')
@@ -162,7 +98,52 @@ if __name__ =='__main__':
     #print(resume_skills)
     email_id_list = get_emailing_list(connection)
    # print(email_list)
-    final_result = get_job_description("Software Engineer",2,data)
+    job_details_linkedin, final_result_linkedin = scrapper_linkedin.get_job_description("Software Engineer", 2, data, all_skills, resume_skills, connection)
+    job_details = job_details_linkedin
+    final_result = final_result_linkedin
+    #job_details_glassdoor, final_result_glassdoor = scrapper_glassdoor.get_job_description("Software Engineer",5,False)
+    #job_details = dict()
+    #final_result = dict()
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print(job_details)
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print(job_details_linkedin)
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print(job_details_glassdoor)
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #job_details = job_details.update(job_details_linkedin)
+    #print(job_details)
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #job_details = job_details.update(job_details_glassdoor)
+    #print(job_details)
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #print("...................................")
+    #final_result = final_result.update(final_result_linkedin)
+    #final_result = final_result.update(final_result_glassdoor)
+    #print(final_result)
     #print("\n final_result -------\n",final_result,"\n")
 
 
@@ -173,7 +154,7 @@ if __name__ =='__main__':
 port = 587
 smtp_server = "smtp.gmail.com"
 login = "srijas.alerts@gmail.com"
-password = ""
+password = "SRIJASGMAILPWD"
 sender = "srijas.alerts@gmail.com"
 for key in final_result:
      if key in email_id_list:
@@ -201,17 +182,19 @@ for key in final_result:
 
          msg.attach(MIMEText("\n\n Regards, \nTeam SRIJAS", 'plain'))
          text = msg.as_string()
-        
+
          try:
               server = smtplib.SMTP(smtp_server, port)
               server.connect(smtp_server,port)
               server.ehlo()
               server.starttls()
               server.ehlo()
+              print(login,password)
               server.login(login, password)
               server.sendmail(sender, receiver, text)
               server.quit()                                                                                # tell the script to report if your message was sent or which errors need to be fixed
               print('Sent')
+              clean_data(connection)
          except (gaierror, ConnectionRefusedError):
               print('Failed to connect to the server. Bad connection settings?')
          except smtplib.SMTPServerDisconnected as e:
