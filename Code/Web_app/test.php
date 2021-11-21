@@ -1,7 +1,7 @@
 <?php
 ob_start();
 require 'sendData.php';
-$results = executer("Harish Chandra", "harishboy@gmail.com", "Raleigh", 1, "Harshil_Shah_Resume.pdf");
+$results = executer("Harish Chandra", "harishboy@gmail.com", "Raleigh", 1, "Harshil_Shah_Resume.pdf", "password");
 ob_end_clean();
 if($results["resume"]==1){
   $message2 = "Resume test cases passed successfully.";
