@@ -4,12 +4,125 @@ from email.mime.text import MIMEText
 from socket import gaierror
 import smtplib
 import json
-import scrapper_linkedin
+import linkedin_scrapper
 import scrapper_glassdoor
-#######################################################DATABASE OPERATIONS########################################################################################
+
+def run():
+    properties = open('parameters.json')
+    data = json.load(properties)
+    connection = db_connect(properties)
+    all_skills = get_all_skills(connection)
+    resume_skills = get_resume_skills(connection)
+    email_id_list = get_emailing_list(connection)
+    user_info = {'akashokkumar300@gmail.com' : ("Software Developer Intern", "Raleigh", "Ashok")}
+    user_job_board_list = [('akashokkumar300@gmail.com', 'LINKEDIN')]
+    job_board_role_mp = generate_job_board_role_mp(user_job_board_list, user_info)
+
+    job_map = generate_job_map(job_board_role_mp)
+
+    user_jobs = generate_user_jobs_mp(user_info, user_job_board_list, job_map)
+
+    send_mail(user_jobs, user_info)
+
+def generate_user_jobs_mp(user_info, user_job_board_list, job_map):
+    user_jobs = {}
+    for uj in user_job_board_list:
+        user = uj[0]
+        if user not in user_jobs:
+            user_jobs[user] = []
+        user_job_req = (user_info[user][0], user_info[user][1])
+        jobs = job_map[uj[1]][user_job_req]
+        user_jobs[user].extend(jobs)
+    return user_jobs
+
+# This function generates a map of job board and map of pair of role and location
+# and jobs with that role and Location
+# example:
+#     {'LINKEDIN' : {
+#         ('Software Developer Intern', 'Raleigh'): [{
+#             'title': ..,
+#             'url':..,
+#             'skills':..
+#             }]
+#         }
+#     }
+def generate_job_map(job_board_role_mp):
+    job_map = {}
+    for jb in job_board_role_mp.keys():
+        job_map[jb] = {}
+        for rl in job_board_role_mp[jb]:
+            if (jb == 'LINKEDIN'):
+                j = linkedin_scrapper.get_jobs(rl[0],rl[1],10);
+            job_map[jb][rl] = j
+    return job_map
 
 
-############################################creating connection for database#################################
+# This function generates a map of job boards and list of pair of job role and location.
+# example:
+#   {'LINKEDIN': [('Software Developer Intern', 'Raleigh')]}
+def generate_job_board_role_mp(user_job_board_list, user_info):
+    job_board_role_mp = {}
+    for uj in user_job_board_list:
+        if uj[1] not in job_board_role_mp:
+            job_board_role_mp[uj[1]] = []
+        u_info = user_info[uj[0]]
+        job_board_role_mp[uj[1]].append((u_info[0], u_info[1]))
+    return job_board_role_mp
+
+def send_mail(user_jobs, user_info):
+    port = 587
+    smtp_server = "smtp.gmail.com"
+    login = "srijas.alerts@gmail.com"
+    password = "SRIJASGMAILPWD"
+    sender = "srijas.alerts@gmail.com"
+    for user in user_info.keys():
+         receiver = user
+         jobs = user_jobs[user]
+         # print(jobs)
+         # print(receiver)
+         msg = MIMEMultipart()
+         msg['From'] = sender
+         msg['To'] = receiver
+         msg['Subject'] = 'SRIJAS - Job List'
+
+         body = """\n Hi """+ user_info[user][2] +""",\n Good News !! \n We have found """+str(len(jobs)) +""" job that match your resume \n"""
+         msg.attach(MIMEText(body, 'plain'))
+
+         temp_body =""
+         html_start = """<html><head></head><body><p><ol>"""
+         for job in jobs:
+             # print(job)
+             temp_body +="<li>"+ job['title'] + "<a href=\""+ job['url'] + "\"> Click to Apply </a>"
+         html_end= """</ol></p></body> </html>"""
+
+         html= html_start + temp_body + html_end
+
+         msg.attach( MIMEText(html, 'html'))
+
+         msg.attach(MIMEText("\n\n Regards, \nTeam SRIJAS", 'plain'))
+         text = msg.as_string()
+
+         try:
+              server = smtplib.SMTP(smtp_server, port)
+              server.connect(smtp_server,port)
+              server.ehlo()
+              server.starttls()
+              server.ehlo()
+              print(login,password)
+              server.login(login, password)
+              server.sendmail(sender, receiver, text)
+              server.quit()                                                                                # tell the script to report if your message was sent or which errors need to be fixed
+              print('Sent')
+              #clean_data(connection)
+         except (gaierror, ConnectionRefusedError):
+              print('Failed to connect to the server. Bad connection settings?')
+         except smtplib.SMTPServerDisconnected as e:
+              print('Failed to connect to the server. Wrong user/password?')
+              print(str(e))
+         except smtplib.SMTPException as e:
+              print('SMTP error occurred: ' + str(e))
+
+
 def db_connect(properties):
     properties = open('parameters.json')
     data = json.load(properties)
@@ -75,76 +188,12 @@ def get_emailing_list(connection):
     #print("Resume id and email id",email_id_list)
     return email_id_list
 
+def get_user_notification_info():
+    query = "SELECT um.user_email, um.user_fname, um.location, jm.job_title, jb.name from user_master um, job_board jb, job_master jm, user_notification un where um.user_preferred_job_id = jm.job_id and um.user_id = un.user_id and un.job_board_id = jb.job_board_id"
+    cursor=connection.cursor()
+    cursor.execute(query)
+    return cursor.fetchall()
+
 
 if __name__ =='__main__':
-    properties = open('parameters.json')
-    data = json.load(properties)
-    connection = db_connect(properties)
-    all_skills = get_all_skills(connection)
-    #print(all_skills)
-    resume_skills = get_resume_skills(connection)
-    #print(resume_skills)
-    email_id_list = get_emailing_list(connection)
-   # print(email_list)
-    job_details_linkedin, final_result_linkedin = scrapper_linkedin.get_job_description("Software Developer Intern", "Raleigh", 10, data, all_skills, resume_skills, connection)
-    job_details = job_details_linkedin
-    final_result = final_result_linkedin
-
-
-
-##########################################################EMAIL SERVICE######################################################################
-
-
- ##generating receiever email ids
-port = 587
-smtp_server = "smtp.gmail.com"
-login = "srijas.alerts@gmail.com"
-password = "SRIJASGMAILPWD"
-sender = "srijas.alerts@gmail.com"
-for key in final_result:
-     if key in email_id_list:
-         receiver = email_id_list[key][0]
-         list_of_curr_links = final_result[key]
-         #print(receiver)
-         msg = MIMEMultipart()
-         msg['From'] = sender
-         msg['To'] = receiver
-         msg['Subject'] = 'SRIJAS - Job List'
-
-         body = """\n Hi """+ email_id_list[key][1] +""",\n Good News !! \n We have found """+str(len(list_of_curr_links)) +""" job that match your resume \n"""
-
-         msg.attach(MIMEText(body, 'plain'))
-
-         temp_body =""
-         html_start = """<html><head></head><body><p><ol>"""
-         for link in list_of_curr_links:
-             temp_body +="<li>"+ job_details[link][0] + " " + job_details[link][1] + "<a href=\""+ link + "\"> Click to Apply </a>"
-         html_end= """</ol></p></body> </html>"""
-
-         html= html_start + temp_body + html_end
-
-         msg.attach( MIMEText(html, 'html'))
-
-         msg.attach(MIMEText("\n\n Regards, \nTeam SRIJAS", 'plain'))
-         text = msg.as_string()
-
-         try:
-              server = smtplib.SMTP(smtp_server, port)
-              server.connect(smtp_server,port)
-              server.ehlo()
-              server.starttls()
-              server.ehlo()
-              print(login,password)
-              server.login(login, password)
-              server.sendmail(sender, receiver, text)
-              server.quit()
-              # tell the script to report if your message was sent or which errors need to be fixed
-              print('Sent')
-              #clean_data(connection)
-         except (gaierror, ConnectionRefusedError):
-              print('Failed to connect to the server. Bad connection settings?')
-         except smtplib.SMTPServerDisconnected as e:
-              print('Failed to connect to the server. Wrong user/password?')
-              print(str(e))
-         except smtplib.SMTPException as e:
-              print('SMTP error occurred: ' + str(e))
+    run()
