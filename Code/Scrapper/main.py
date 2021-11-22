@@ -6,6 +6,7 @@ import smtplib
 import json
 import linkedin_scrapper
 import scrapper_glassdoor
+import helper
 
 def run():
     properties = open('parameters.json')
