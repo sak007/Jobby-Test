@@ -18,7 +18,8 @@ def run():
     user_job_board_list = [('akashokkumar300@gmail.com', 'LINKEDIN')]
     job_board_role_mp = generate_job_board_role_mp(user_job_board_list, user_info)
 
-    job_map = generate_job_map(job_board_role_mp)
+    all_skills = helper.get_all_skills()
+    job_map = generate_job_map(job_board_role_mp, all_skills)
 
     user_jobs = generate_user_jobs_mp(user_info, user_job_board_list, job_map)
 
@@ -46,13 +47,13 @@ def generate_user_jobs_mp(user_info, user_job_board_list, job_map):
 #             }]
 #         }
 #     }
-def generate_job_map(job_board_role_mp):
+def generate_job_map(job_board_role_mp, all_skills):
     job_map = {}
     for jb in job_board_role_mp.keys():
         job_map[jb] = {}
         for rl in job_board_role_mp[jb]:
             if (jb == 'LINKEDIN'):
-                j = linkedin_scrapper.get_jobs(rl[0],rl[1],10);
+                j = linkedin_scrapper.get_jobs(rl[0],rl[1],10, all_skills);
             job_map[jb][rl] = j
     return job_map
 
@@ -188,7 +189,7 @@ def get_emailing_list(connection):
     #print("Resume id and email id",email_id_list)
     return email_id_list
 
-def get_user_notification_info():
+def get_user_notification_info(connection):
     query = "SELECT um.user_email, um.user_fname, um.location, jm.job_title, jb.name from user_master um, job_board jb, job_master jm, user_notification un where um.user_preferred_job_id = jm.job_id and um.user_id = un.user_id and un.job_board_id = jb.job_board_id"
     cursor=connection.cursor()
     cursor.execute(query)

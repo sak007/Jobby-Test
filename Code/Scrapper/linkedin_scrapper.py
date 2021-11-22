@@ -17,7 +17,7 @@ from bs4 import BeautifulSoup
 import json
 import traceback
 
-def get_jobs(role, location, no_of_jobs_to_retrieve):
+def get_jobs(role, location, no_of_jobs_to_retrieve, all_skills):
     match_threshold=1
     url = "https://www.linkedin.com/jobs/jobs-in-"+location+"?keywords="+role+"&f_JT=F%2CP&f_E=1%2C3&position=1&pageNum=0"
     url = url.replace(' ', '%20')
@@ -41,7 +41,7 @@ def get_jobs(role, location, no_of_jobs_to_retrieve):
                 soup=BeautifulSoup(k,'html.parser')
                 str2 = soup.find_all("div", {"class" : "description__text"})
                 str3 = str2[0].get_text()
-                job["skills"] = helper.extract_skills(str3)
+                job["skills"] = helper.extract_skills(str3, all_skills)
                 jobs.append(job)
     except Exception as e:
         traceback.print_exc()
