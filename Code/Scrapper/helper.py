@@ -20,7 +20,6 @@ def get_all_skills():
     all_skills=[]
     for row in records:
         all_skills.append(row[0])
-    #print("All skills",all_skills)
     return all_skills
 
 def extract_skills(description, total_skills):
@@ -30,5 +29,4 @@ def extract_skills(description, total_skills):
     for skill in total_skills:
         if (skill.upper() in desc_list) or ((skill.upper() + ".") in desc_list) or (skill.upper().center(1) in desc_list):
             list_of_skills_matched.append(skill)
-    #print(list_of_skills_matched)
     return list_of_skills_matched

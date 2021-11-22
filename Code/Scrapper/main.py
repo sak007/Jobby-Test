@@ -18,8 +18,6 @@ def run():
     data = get_user_notification_info(connection)
     user_info = generate_user_info(data)
     user_job_board_list = generate_user_job_board_list(data)
-    #user_info = {'akashokkumar300@gmail.com' : ("Software Developer Intern", "Raleigh", "Ashok")}
-    #user_job_board_list = [('akashokkumar300@gmail.com', 'LINKEDIN')]
     print(user_info)
     print(user_job_board_list)
     job_board_role_mp = generate_job_board_role_mp(user_job_board_list, user_info)
@@ -32,10 +30,8 @@ def run():
     send_mail(user_jobs, user_info)
 
 def generate_user_info(data):
-    # print(data)
     user_info = {}
     for d in data:
-        # print(d)
         user_info[d[0]] = (d[3], d[2], d[1])
     return user_info
 
@@ -99,8 +95,6 @@ def send_mail(user_jobs, user_info):
     for user in user_info.keys():
          receiver = user
          jobs = user_jobs[user]
-         # print(jobs)
-         # print(receiver)
          msg = MIMEMultipart()
          msg['From'] = sender
          msg['To'] = receiver
@@ -112,7 +106,6 @@ def send_mail(user_jobs, user_info):
          temp_body =""
          html_start = """<html><head></head><body><p><ol>"""
          for job in jobs:
-             # print(job)
              temp_body +="<li>"+ job['title'] + "<a href=\""+ job['url'] + "\"> Click to Apply </a>"
          html_end= """</ol></p></body> </html>"""
 
@@ -134,7 +127,6 @@ def send_mail(user_jobs, user_info):
               server.sendmail(sender, receiver, text)
               server.quit()                                                                                # tell the script to report if your message was sent or which errors need to be fixed
               print('Sent')
-              #clean_data(connection)
          except (gaierror, ConnectionRefusedError):
               print('Failed to connect to the server. Bad connection settings?')
          except smtplib.SMTPServerDisconnected as e:
@@ -180,7 +172,6 @@ def get_all_skills(connection):
     all_skills={}
     for row in records:
         all_skills[row[0]]=row[1]
-    #print("All skills",all_skills)
     return all_skills
 
 
@@ -206,7 +197,6 @@ def get_emailing_list(connection):
     records_email=cursor.fetchall()
     for row in records_email:
         email_id_list[row[0]]=[row[1],row[2]]
-    #print("Resume id and email id",email_id_list)
     return email_id_list
 
 def get_user_notification_info(connection):
