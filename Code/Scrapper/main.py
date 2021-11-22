@@ -15,8 +15,13 @@ def run():
     all_skills = get_all_skills(connection)
     resume_skills = get_resume_skills(connection)
     email_id_list = get_emailing_list(connection)
-    user_info = {'akashokkumar300@gmail.com' : ("Software Developer Intern", "Raleigh", "Ashok")}
-    user_job_board_list = [('akashokkumar300@gmail.com', 'LINKEDIN')]
+    data = get_user_notification_info(connection)
+    user_info = generate_user_info(data)
+    user_job_board_list = generate_user_job_board_list(data)
+    #user_info = {'akashokkumar300@gmail.com' : ("Software Developer Intern", "Raleigh", "Ashok")}
+    #user_job_board_list = [('akashokkumar300@gmail.com', 'LINKEDIN')]
+    print(user_info)
+    print(user_job_board_list)
     job_board_role_mp = generate_job_board_role_mp(user_job_board_list, user_info)
 
     all_skills = helper.get_all_skills()
@@ -25,6 +30,20 @@ def run():
     user_jobs = generate_user_jobs_mp(user_info, user_job_board_list, job_map)
 
     send_mail(user_jobs, user_info)
+
+def generate_user_info(data):
+    # print(data)
+    user_info = {}
+    for d in data:
+        # print(d)
+        user_info[d[0]] = (d[3], d[2], d[1])
+    return user_info
+
+def generate_user_job_board_list(data):
+    list = []
+    for d in data:
+        list.append((d[0], d[4]))
+    return list
 
 def generate_user_jobs_mp(user_info, user_job_board_list, job_map):
     user_jobs = {}
