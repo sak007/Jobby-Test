@@ -52,6 +52,9 @@ $conn->close();
   input[type="text"]::placeholder {
       text-align: center;
   }
+  input[type="password"]::placeholder {
+      text-align: center;
+  }
 </style>
 <title> S.R.I.J.A.S. </title>
 </head>
@@ -64,7 +67,7 @@ $conn->close();
   </div>
 
 <div class="align-items-center" align = "center">
-  <form method="post" enctype="multipart/form-data" action="sendData.php">
+  <form method="post" enctype="multipart/form-data" action="registerUser.php">
 
     <div class="form-group col-4">
       <label for="inputName">Name</label>
@@ -128,14 +131,3 @@ $conn->close();
 <br>
 </body>
 </html>
-
-<!-- <script>
-
-function submitter() {
-  var name = document.getElementById("inputName").value;
-  var email = document.getElementById("inputEmail").value;
-
-  window.alert(name);
-}
-
-</script> -->
