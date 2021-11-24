@@ -1,6 +1,6 @@
 <?php
 ob_start();
-require 'sendData.php';
+require 'registerUser.php';
 $results = executer("Harish Chandra", "harishboy@gmail.com", "Raleigh", 1, "Harshil_Shah_Resume.pdf", "password");
 ob_end_clean();
 if($results["resume"]==1){
