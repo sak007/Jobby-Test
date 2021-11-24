@@ -115,9 +115,9 @@ pip install -r requirements.txt
 
 
 ## Team Members
-  * Smayana Pidugu (spidugu@ncsu.edu)
-  * Gokul Krishna Koganti (gkogant@ncsu.edu)
-  * Rachana Kondabala (rkondab@ncsu.edu)
-  * Harikrishna Selvaraj (hselvar2@ncsu.edu)
-  * Kiran Bharadwaj Ganesh (kganesh4@ncsu.edu) 
+  * Ashok Kumar Selvam (aselvam@ncsu.edu)
+  * Rithik Jain (rjain25@ncsu.edu)
+  * Sri Athithya Kruth Babu (sbabu@ncsu.edu)
+  * Subramanian Venkatraman (svenka25@ncsu.edu)
+  * Zunaid Sorathiya (zhsoarth@ncsu.edu) 
 
