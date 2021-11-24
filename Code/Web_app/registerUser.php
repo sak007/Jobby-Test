@@ -13,7 +13,7 @@ ob_start();
      * that indicate respectively whether the resume table code test cases
      * and the user table code test cases have passed. 1-> pass, 0-> fail
      */
-function executer($inputName, $inputEmail,$location, $inputJobTypeId, $target_file){
+function executer($inputName, $inputEmail,$location, $inputJobTypeId, $target_file, $inputPassword){
   /**
      * Include the autoload.php file from the PdfParser application for
      * reading the text from the pdf.
@@ -90,15 +90,6 @@ else{
 }
 
 /**
-   * @var active int and
-   * @var created_by int and
-   * @var updated_by int store placeholder values for updating tables
-   */
-$active = 1;
-$created_by = -1;
-$updated_by = -1;
-
-/**
    * This segment of the code is created for test cases. It fetches current max
    * values of the user and resume IDs, so as to compare it with the max IDs
    * after updating the tables.
@@ -132,10 +123,10 @@ if(count($_POST)<=1){
    * This segment of the code uses a prepared statement to insert the form data
    * into the user_master table
    */
-$stmt = $conn->prepare("INSERT INTO user_master (user_fname, user_lname, user_email, user_preferred_job_id,location, is_active, created_by)
-  VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO user_master (user_fname, user_lname, user_email, user_pwd, user_preferred_job_id,location)
+  VALUES (?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("sssisii", $firstName, $lastName, $inputEmail, $inputJobTypeId,$location, $active, $created_by);
+$stmt->bind_param("ssssis", $firstName, $lastName, $inputEmail, $inputPassword, $inputJobTypeId,$location);
 $stmt->execute();
 $stmt->close();
 
@@ -161,10 +152,10 @@ echo "<br><br>";
    * matched skills from the resume text.
    */
 $empty = "";
-$stmt = $conn->prepare("INSERT INTO resume_master (resume_json, resume_degrees, resume_links, resume_summary, is_active, created_by, updated_by)
-  VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO resume_master (resume_json)
+  VALUES (?)");
 
-$stmt->bind_param("ssssiii", $text, $empty, $empty, $empty, $active, $created_by, $updated_by);
+$stmt->bind_param("s", $text);
 if($stmt->execute()){
   echo "Resume added successfully";
 }
@@ -202,10 +193,10 @@ if ($len > 0) {
     $match = preg_match('/'.$reg.'/i', $text);
     if($match){
       array_push($skill_array, $reg);
-      $stmt = $conn->prepare("INSERT INTO resume_skills (resume_id, skill_id, is_active, created_by, updated_by)
-        VALUES (?, ?, ?, ?, ?)");
+      $stmt = $conn->prepare("INSERT INTO resume_skills (resume_id, skill_id)
+        VALUES (?, ?)");
       $skill_id = $row["skill_id"];
-      $stmt->bind_param("iiiii", $max, $skill_id, $active, $created_by, $updated_by);
+      $stmt->bind_param("ii", $max, $skill_id);
       $stmt->execute();
       $stmt->close();
     }
@@ -231,10 +222,10 @@ else{
   $user_max = 1;
 }
 
-$stmt = $conn->prepare("INSERT INTO user_resume (user_id, resume_id, is_active, created_by, updated_by)
-  VALUES (?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO user_resume (user_id, resume_id)
+  VALUES (?, ?)");
 
-$stmt->bind_param("iiiii", $user_max, $max, $active, $created_by, $updated_by);
+$stmt->bind_param("ii", $user_max, $max);
 if($stmt->execute()){
   echo "User-resume added successfully";
 }
@@ -314,8 +305,21 @@ $conn->close();
 /**
    * Here, the control is sent back to the index.php file
     */
+#$pycodepath = getcwd()."/Scrapper/scrapper.py";
+#echo $pycodepath;
+#$pypathcmd = escapeshellcmd("which python3");
+#echo $pypathcmd;
+#$pypath = shell_exec($pypathcmd)." ";
+#echo $pypath;
+#$pypath .= $pycodepath;
+#echo $pypath;
+#$command = escapeshellcmd($pypath);
+#echo $command;
+#$output = shell_exec($command);
+#echo $output;
+
 ob_end_clean();
-echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
+echo "<script type='text/javascript'>window.top.location='login.php';</script>"; exit;
 
 }catch(Exception $e){
   echo "Code did not execute - caught exception in function executer: ".$e->getMessage()."<br>";
@@ -330,11 +334,11 @@ echo "<script type='text/javascript'>window.top.location='index.php';</script>";
     */
 if(count($_POST)>1){
   try{
-
   $inputName = $_POST["inputName"];
   $inputEmail = $_POST["inputEmail"];
   $inputJobTypeId = $_POST["inputJobTypeId"];
   $location = $_POST["location"];
+  $password = $_POST["password"];
 
 
 
@@ -363,11 +367,10 @@ if(count($_POST)>1){
 }
 
 try{
-  executer($inputName, $inputEmail, $location, $inputJobTypeId, $target_file);
+  executer($inputName, $inputEmail, $location, $inputJobTypeId, $target_file, $password);
 }catch(Exception $e){
   echo "Code did not execute - caught exception in function call->function executer: ".$e->getMessage()."<br>";
 }
 }
-
 
 ?>

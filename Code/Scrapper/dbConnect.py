@@ -1,8 +1,8 @@
 import pymysql
 
-host = 'srijas.ccmzvxxhd27m.us-east-1.rds.amazonaws.com'
-user = 'root'
-password = ''
+host = 'srijas.cd1pfgqpboiq.us-east-1.rds.amazonaws.com'
+user = 'admin'
+password = 'adminadmin'
 database = 'srijas'
 
 connection = pymysql.connect(host = host, user = user, password = password, database = database)

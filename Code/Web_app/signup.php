@@ -52,6 +52,9 @@ $conn->close();
   input[type="text"]::placeholder {
       text-align: center;
   }
+  input[type="password"]::placeholder {
+      text-align: center;
+  }
 </style>
 <title> S.R.I.J.A.S. </title>
 </head>
@@ -64,7 +67,7 @@ $conn->close();
   </div>
 
 <div class="align-items-center" align = "center">
-  <form method="post" enctype="multipart/form-data" action="sendData.php">
+  <form method="post" enctype="multipart/form-data" action="registerUser.php">
 
     <div class="form-group col-4">
       <label for="inputName">Name</label>
@@ -76,10 +79,14 @@ $conn->close();
       <input type="email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Enter email" required>
     </div>
     <div class="form-group  col-4">
+      <label for="inputLocation">Password</label>
+      <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
+    </div>
+    <div class="form-group  col-4">
       <label for="inputLocation">Location</label>
       <input type="text" name="location" class="form-control" id="location" placeholder="Enter location" required>
     </div>
-  
+
 
     <div class="col-auto my-1 col-4">
       <label for="inputJobTypeId">Type Of Job You Are Looking For: </label>
@@ -101,7 +108,7 @@ $conn->close();
     </div>
 
     <div class="col-auto my-1">
-      <button type="submit" value="Submit" id="submit" name="submit" class="btn btn-primary col-auto">Submit</button>
+      <button type="submit" value="Submit" id="submit" name="submit" class="btn btn-primary col-auto">Sign Up</button>
     </div>
 
   </form>
@@ -124,14 +131,3 @@ $conn->close();
 <br>
 </body>
 </html>
-
-<!-- <script>
-
-function submitter() {
-  var name = document.getElementById("inputName").value;
-  var email = document.getElementById("inputEmail").value;
-
-  window.alert(name);
-}
-
-</script> -->
