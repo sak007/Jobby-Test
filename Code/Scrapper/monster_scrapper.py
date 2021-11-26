@@ -1,6 +1,7 @@
 import json
 import traceback
 import requests
+import helper
 
 def get_jobs(role, location, no_of_jobs_to_retrieve, all_skills):
     match_threshold=1
