@@ -46,16 +46,18 @@
   $conn->close();
   ?>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+	<div class="bg">
 	<section class="h-100">
 		<div class="container h-100">
 			<div class="row justify-content-sm-center h-100">
 				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
           <div class="text-center my-5">
+						<img src="logo.jpg" alt="logo">
             <!-- <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="100"> -->
-            <h2 class="display-4 font-weight-bold" style="font-size:15px;display:inline-block">S.R.I.J.A.S. (Smart Resume Interpreter And Job Alerts System)</h2>
+            <!-- <h2 class="display-4 font-weight-bold" style="font-size:15px;display:inline-block">S.R.I.J.A.S. (Smart Resume Interpreter And Job Alerts System)</h2> -->
           </div>
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
@@ -88,7 +90,7 @@
 
                 <div class="mb-3">
                   <label class="mb-2 text-muted" for="inputJobTypeId">Job you're looking for </label>
-                  <select class="custom-select mr-sm-2" id="inputJobTypeId" name="inputJobTypeId" required>
+                  <select class="custom-select mr-sm-2 form-control" id="inputJobTypeId" name="inputJobTypeId" required>
                     <option selected>Choose...</option>
                     <?php
                     $count = 0;
@@ -119,5 +121,6 @@
 			</div>
 		</div>
 	</section>
+</div>
 </body>
 </html>

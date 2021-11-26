@@ -6,22 +6,25 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>S.R.I.J.A.S - Login</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
+<?php
+  session_start();
+  if(isset($_SESSION['user'])){
+      header('Location: home.php');
+  }
+  include "connectDB.php";
+ ?>
 <body>
+  <div class="bg">
   <section class="h-100">
     <div class="container h-100">
       <div class="row justify-content-sm-center h-100">
         <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
           <div class="text-center my-5">
-            <!-- <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="100"> -->
-            <h2 class="display-4 font-weight-bold" style="font-size:15px;display:inline-block">S.R.I.J.A.S. (Smart Resume Interpreter And Job Alerts System)</h2>
+            <img src="logo.jpg" alt="logo">
           </div>
-          <!-- <div style="background: url(https://i.postimg.cc/3N7wnb75/background.jpg)no-repeat; background-size: cover;" class="jumbotron bg-cover text-white">
-            <div class="container py-5 text-center">
-                <h1 class="display-4 font-weight-bold">S.R.I.J.A.S. (Smart Resume Interpreter And Job Alerts System)</h1>
-            </div>
-          </div> -->
           <div class="card shadow-lg">
             <div class="card-body p-5">
               <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
@@ -42,10 +45,6 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                  <div class="form-check">
-                    <input type="checkbox" name="remember" id="remember" class="form-check-input">
-                    <label for="remember" class="form-check-label">Remember Me</label>
-                  </div>
                   <button type="submit" name="submit" class="btn btn-primary ms-auto"> Login </button>
                   </div>
                 </div>
@@ -57,17 +56,6 @@
               </form>
               <?php
                if(isset($_POST['submit']) && ($_POST['inputEmail'] != "") && ($_POST['password'] != "")){
-                 session_start();
-                 $paramsFile = file_get_contents("parameters.json");
-                 $params = json_decode($paramsFile, true);
-                 $servername = $params["server_name"];
-                 $username = $params["user_name"];
-                 $password = $params["password"];
-                 $db = $params["db_name"];
-                $conn = new mysqli($servername, $username, $password, $db);
-                if ($conn->connect_error) {
-                  die("Connection failed: " . $conn->connect_error);
-                }
                 $sql = "SELECT user_pwd FROM user_master where user_email='".$_POST['inputEmail']."'";
                 $result = $conn->query($sql);
                 $row = $result->fetch_assoc();
@@ -96,5 +84,6 @@
 <br>
 <div align="center">Made with <span style="color: #e25555;">&hearts;</span>. Contribute on <a href="https://github.com/sak007/SRIJAS" class="text-dark" target="_blank">GitHub</a>.</div>
 <br>
+</div>
 </body>
 </html>
