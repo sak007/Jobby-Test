@@ -319,7 +319,7 @@ $conn->close();
 #echo $output;
 
 ob_end_clean();
-echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
+echo "<script type='text/javascript'>window.top.location='login.php';</script>"; exit;
 
 }catch(Exception $e){
   echo "Code did not execute - caught exception in function executer: ".$e->getMessage()."<br>";
