@@ -1,86 +1,89 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- We use Bootstrap CSS for styling purposes-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<style media="screen">
-  input[type="email"]::placeholder {
-      text-align: center;
-  }
-  input[type="password"]::placeholder {
-      text-align: center;
-  }
-</style>
-<title> S.R.I.J.A.S. </title>
+  <meta charset="utf-8">
+  <meta name="author" content="Group-32, Fall 2021">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>S.R.I.J.A.S - Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<!-- Here, we create a simple form with the options to add name, email, job type and upload a .pdf file-->
-  <div style="background: url(https://i.postimg.cc/3N7wnb75/background.jpg)no-repeat; background-size: cover;" class="jumbotron bg-cover text-white">
-      <div class="container py-5 text-center">
-          <h1 class="display-4 font-weight-bold">S.R.I.J.A.S. (Smart Resume Interpreter And Job Alerts System)</h1>
-      </div>
-  </div>
 
-<div class="align-items-center" align = "center">
-  <form method="post" action="">
-
-    <div class="form-group  col-4">
-      <label for="inputEmail">Email address</label>
-      <input type="email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Enter email" required>
-    </div>
-
-    <div class="form-group  col-4">
-      <label for="inputLocation">Password</label>
-      <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
-    </div>
-
-    <div class="col-auto my-1">
-      <button type="submit" value="Submit" id="submit" name="submit" class="btn btn-primary col-auto">Login</button>
-    </div>
-  </form>
-  <?php
-   if(isset($_POST['submit']) && ($_POST['inputEmail'] != "") && ($_POST['password'] != "")){
-     session_start();
-     $paramsFile = file_get_contents("parameters.json");
-     $params = json_decode($paramsFile, true);
-     $servername = $params["server_name"];
-     $username = $params["user_name"];
-     $password = $params["password"];
-     $db = $params["db_name"];
-    $conn = new mysqli($servername, $username, $password, $db);
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
-    $sql = "SELECT user_pwd FROM user_master where user_email='".$_POST['inputEmail']."'";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    $len = $result->num_rows;
-    if (($len == 1) && ($row["user_pwd"] == $_POST['password'])) {
-        $_SESSION['user'] = $_POST['inputEmail'];
-        header('Location: home.php');
-    } else {
-      echo '<span style="color:#FF0000"> Invalid Email/Password </span><br/>';
-    }
-    $conn->close();
+<?php
+  session_start();
+  if(isset($_SESSION['user'])){
+      header('Location: home.php');
   }
-  ?>
-  <a href="signup.php">New User? Click here to Sign Up<a/>
-</div>
+  include "connectDB.php";
+ ?>
+<body>
+  <div class="bg">
+  <section class="h-100">
+    <div class="container h-100">
+      <div class="row justify-content-sm-center h-100">
+        <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+          <div class="text-center my-5">
+            <img src="logo.jpg" alt="logo">
+          </div>
+          <div class="card shadow-lg">
+            <div class="card-body p-5">
+              <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
+              <form method="POST" action="" class="needs-validation" novalidate="" autocomplete="off">
+                <div class="mb-3">
+                  <label class="mb-2 text-muted" for="inputEmail">E-Mail Address</label>
+                  <input type="email" id="inputEmail" class="form-control" name="inputEmail" placeholder="Enter your email address" value="" required autofocus>
+                  <div class="invalid-feedback"> Email is invalid </div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="mb-2 w-100">
+                    <label class="mb-2 text-muted" for="inputLocation">Password</label>
+                    <a href="forgot.php" class="float-end"> Forgot Password? </a>
+                  </div>
+                  <input id="password" type="password" name="password" class="form-control"  placeholder="Enter your Password" required>
+                  <div class="invalid-feedback"> Password is required </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                  <button type="submit" name="submit" class="btn btn-primary ms-auto"> Login </button>
+                  </div>
+                </div>
+              <div class="card-footer py-3 border-0">
+                <div class="text-center">
+                  Don't have an account? <a href="signup.php" class="text-dark">Create One</a>
+                </div>
+              </div>
+              </form>
+              <?php
+               if(isset($_POST['submit']) && ($_POST['inputEmail'] != "") && ($_POST['password'] != "")){
+                $sql = "SELECT user_pwd FROM user_master where user_email='".$_POST['inputEmail']."'";
+                $result = $conn->query($sql);
+                $row = $result->fetch_assoc();
+                $len = $result->num_rows;
+                if (($len == 1) && ($row["user_pwd"] == $_POST['password'])) {
+                    $_SESSION['user'] = $_POST['inputEmail'];
+                    header('Location: home.php');
+                }
+                else {
+                  echo '<span style="color:#FF0000"> Invalid Email/Password </span><br/>';
+                }
+                $conn->close();
+              }
+              ?>
+            </div>
 <!-- Here, we add a link to a useful resource for job searches-->
-<div class="container hero">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
+<!-- <div class="container h-100">
+    <div class="row justify-content-sm-center h-100">
+        <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
             <h1 class="text-center">Job Search Was Never This Easy!</h1>
-            <h4 class="text-center"> Wake up to email updates about what happened in the last one day, and get up to speed with applying for that dream job.</h4>
-            <div class="embed-responsive embed-responsive-16by9"><iframe width="560" height="315" src="https://www.youtube.com/embed/u75hUSShvnc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <h4 class="text-center"> Wake up to email updates about your Dream Job.</h4>
+            <div class="embed-responsive embed-responsive-16by9"><iframe width="560" height="315" src="https://www.youtube.com/embed/guXxy8LH2QM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
         </div>
     </div>
+</div> -->
+<br>
+<div align="center">Made with <span style="color: #e25555;">&hearts;</span>. Contribute on <a href="https://github.com/sak007/SRIJAS" class="text-dark" target="_blank">GitHub</a>.</div>
+<br>
 </div>
-<br>
-<div align="center">Made with <span style="color: #e25555;">&hearts;</span>. Contribute on GitHub.</div>
-<br>
-<br>
-<br>
-<br>
 </body>
 </html>
