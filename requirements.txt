@@ -59,7 +59,10 @@ webdriver-manager==3.4.2
 zipp==1.0.0
 bs4
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 506d081784c7a3c889ecdb73e5f07e0824925b0e
 
 =======
 schedule
