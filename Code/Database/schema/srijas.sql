@@ -107,5 +107,8 @@ INSERT INTO skill_master(skill_title) VALUES
 
 INSERT INTO job_board (name) VALUES
 ('LINKEDIN'),
-('GLASSDOOR');
+('ZIPRECRUITER'),
+('INDEED'),
+('GOINGLOBAL'),
+('MONSTER');
 COMMIT;
