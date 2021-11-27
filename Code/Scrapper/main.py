@@ -18,15 +18,14 @@ def run():
     data = get_user_notification_info(connection)
     user_info = generate_user_info(data)
     user_job_board_list = generate_user_job_board_list(data)
-    print(user_info)
-    print(user_job_board_list)
+    # print(user_info)
+    # print(user_job_board_list)
     job_board_role_mp = generate_job_board_role_mp(user_job_board_list, user_info)
 
     all_skills = helper.get_all_skills()
     job_map = generate_job_map(job_board_role_mp, all_skills)
 
     user_jobs = generate_user_jobs_mp(user_info, user_job_board_list, job_map)
-
     send_mail(user_jobs, user_info)
 
 def generate_user_info(data):
@@ -68,6 +67,7 @@ def generate_job_map(job_board_role_mp, all_skills):
     for jb in job_board_role_mp.keys():
         job_map[jb] = {}
         for rl in job_board_role_mp[jb]:
+            j = []
             if (jb == 'LINKEDIN'):
                 j = linkedin_scrapper.get_jobs(rl[0],rl[1],10, all_skills);
             job_map[jb][rl] = j
@@ -95,6 +95,8 @@ def send_mail(user_jobs, user_info):
     for user in user_info.keys():
          receiver = user
          jobs = user_jobs[user]
+         if len(jobs) == 0:
+             continue
          msg = MIMEMultipart()
          msg['From'] = sender
          msg['To'] = receiver
