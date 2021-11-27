@@ -40,7 +40,8 @@ def get_jobs(role, location, no_of_jobs_to_retrieve, all_skills):
                 k = requests.get(string1[i]['href']).text
                 soup=BeautifulSoup(k,'html.parser')
                 str2 = soup.find_all("div", {"class" : "description__text"})
-                str3 = str2[0].get_text()
+                if len(str2) > 0:
+                    str3 = str2[0].get_text()
                 job["skills"] = helper.extract_skills(str3, all_skills)
                 jobs.append(job)
     except Exception as e:
