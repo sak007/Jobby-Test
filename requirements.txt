@@ -59,3 +59,5 @@ webdriver-manager==3.4.2
 zipp==1.0.0
 bs4
 schedule
+coverage
+codecov
