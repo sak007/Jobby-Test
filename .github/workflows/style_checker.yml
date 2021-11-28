@@ -4,6 +4,11 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: andymckay/pycodestyle-action@0.1.3
-      - name: Flake8
-        run: flake8 --ignore=E501,E402,E722
+      - uses: actions/checkout@v2
+      - name: Flake8 check action
+        uses: tonybajan/flake8-check-action@v1.2.0
+        with:
+          repotoken: ${{ secrets.GITHUB_TOKEN }}
+          ignore: E501,E402,E722
+
+      
