@@ -61,3 +61,4 @@ bs4
 schedule
 coverage
 codecov
+flake8
