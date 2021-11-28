@@ -16,7 +16,7 @@ jobs:
 #       - php/install-php
       - run:
           name: Run tests
-          command: coverage run -m  pytest -q test/
+          command: coverage run -m  pytest -q
       # - run:
       #     name: Run php tests
       #     command: |
