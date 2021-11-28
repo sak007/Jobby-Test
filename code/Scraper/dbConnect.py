@@ -5,7 +5,7 @@ user = 'admin'
 password = 'adminadmin'
 database = 'srijas'
 
-connection = pymysql.connect(host = host, user = user, password = password, database = database)
+connection = pymysql.connect(host=host, user=user, password=password, database=database)
 with connection:
     cur = connection.cursor()
     cur.execute("SELECT VERSION()")
