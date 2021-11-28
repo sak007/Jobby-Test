@@ -1,8 +1,8 @@
 import pytest
 import sys
-sys.path.append("../code/Scrapper")
-from keyword_extraction_modules import get_user_id_to_list_of_job_ids
-import keyword_extraction_modules as kem
+# sys.path.append("../code/Scrapper")
+from code.keyword_extraction_modules import get_user_id_to_list_of_job_ids
+import code.keyword_extraction_modules as kem
 
 
 resume_skills_dict = {"res1": [1, 2, 3, 4]}
