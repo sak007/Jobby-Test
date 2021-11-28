@@ -1,24 +1,22 @@
-![SRIJAS_LOGO](https://user-images.githubusercontent.com/40118578/135184051-73acf9be-07c1-4c98-9730-68fa161f6a1b.png)
-
+![Jobby_Logo](https://user-images.githubusercontent.com/25822636/143766903-78c31e5e-508d-42fa-8313-c741d278f476.jpg)
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Github](https://img.shields.io/badge/language-python-red.svg)
-[![GitHub issues](https://img.shields.io/github/issues/sak007/SRIJAS)](https://github.com/sak007/SRIJAS/issues?q=is%3Aopen+is%3Aissue)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed/sak007/SRIJAS)](https://github.com/sak007/SRIJAS/issues?q=is%3Aissue+is%3Aclosed)
-[![Github pull requests](https://img.shields.io/github/issues-pr/sak007/SRIJAS)](https://github.com/sak007/SRIJAS/pulls)
-[![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/sak007/SRIJAS)](https://github.com/sak007/SRIJAS/pulls?q=is%3Apr+is%3Aclosed)
+[![Github](https://img.shields.io/badge/language-python-red.svg)](https://www.python.org)
+[![GitHub issues](https://img.shields.io/github/issues/sak007/Jobby)](https://github.com/sak007/Jobby/issues?q=is%3Aopen+is%3Aissue)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/sak007/Jobby)](https://github.com/sak007/Jobby/issues?q=is%3Aissue+is%3Aclosed)
+[![Github pull requests](https://img.shields.io/github/issues-pr/sak007/Jobby)](https://github.com/sak007/Jobby/pulls)
+[![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/sak007/Jobby)](https://github.com/sak007/Jobby/pulls?q=is%3Apr+is%3Aclosed)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646667.svg)](https://doi.org/10.5281/zenodo.5646667)
-[![Build Status](https://circleci.com/gh/sak007/SRIJAS/tree/main.svg?style=svg)](https://circleci.com/gh/sak007/SRIJAS/tree/main)
-[![codecov](https://codecov.io/gh/sak007/SRIJAS/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/sak007/SRIJAS)
-[![version](https://img.shields.io/badge/version-2.0-blue)](https://github.com/sak007/SRIJAS/releases/tag/v2.0)
-[![github workflow](https://github.com/sak007/SRIJAS/actions/workflows/unit_test.yml/badge.svg)](https://github.com/sak007/SRIJAS/actions/workflows/unit_test.yml)
-[![github workflow](https://github.com/sak007/SRIJAS/actions/workflows/style_checker.yml/badge.svg)](https://github.com/sak007/SRIJAS/actions/workflows/style_checker.yml)
-[![github workflow](https://github.com/sak007/SRIJAS/actions/workflows/main.yml/badge.svg)](https://github.com/sak007/SRIJAS/actions/workflows/main.yml)
-[![github workflow](https://github.com/sak007/SRIJAS/actions/workflows/code_formatter.yml/badge.svg)](https://github.com/sak007/SRIJAS/actions/workflows/code_formatter.yml)
-[![github workflow](https://github.com/sak007/SRIJAS/actions/workflows/code_cov.yml/badge.svg)](https://github.com/sak007/SRIJAS/actions/workflows/code_cov.yml)
-[![github workflow](https://github.com/sak007/SRIJAS/actions/workflows/close_as_a_feature.yml/badge.svg)](https://github.com/sak007/SRIJAS/actions/workflows/close_as_a_feature.yml)
-[![github workflow](https://github.com/sak007/SRIJAS/actions/workflows/Respost.yml/badge.svg)](https://github.com/sak007/SRIJAS/actions/workflows/Respost.yml)
+[![Build Status](https://circleci.com/gh/sak007/Jobby/tree/main.svg?style=svg)](https://circleci.com/gh/sak007/Jobby/tree/main)
+[![codecov](https://codecov.io/gh/sak007/Jobby/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/sak007/Jobby)
+[![version](https://img.shields.io/badge/version-3.0-blue)](https://github.com/sak007/Jobby/releases/tag/v3.0)
+[![github workflow](https://github.com/sak007/Jobby/actions/workflows/unit_test.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/unit_test.yml)
+[![github workflow](https://github.com/sak007/Jobby/actions/workflows/style_checker.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/style_checker.yml)
+[![github workflow](https://github.com/sak007/Jobby/actions/workflows/main.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/main.yml)
+[![github workflow](https://github.com/sak007/Jobby/actions/workflows/code_cov.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/code_cov.yml)
+[![github workflow](https://github.com/sak007/Jobby/actions/workflows/close_as_a_feature.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/close_as_a_feature.yml)
+[![github workflow](https://github.com/sak007/Jobby/actions/workflows/Respost.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/Respost.yml)
 
 
 
@@ -33,18 +31,12 @@ https://user-images.githubusercontent.com/32881355/140453003-f6133bbc-b7ec-4d4a-
 
 
 # Jobby
-## Job Search was never this easy
+## Job Hunting Made Easy
 Smart-Resume-Interpreter-And-Job-Alert-System is an application that makes your job search easy and less frustrating.
 With SRIJAS, you can upload your resume and job which you want to search for. The application will browse Linkedin and Glassdoor websites to search for the jobs.
 The links of the jobs that matches with the skills in your resume, will be sent to you via email.
 
 This is our submission for the Project for Software Engineering CSC 510 Fall 2021.
-
-## Infrastructure Description:
-![Infrastructure](https://github.com/SmayanaReddy/SRIJAS/blob/main/images/Infrastructure.jpg)
-
-## Database Schema:
-![DB_Schema](https://github.com/SmayanaReddy/SRIJAS/blob/main/images/database.jpeg)
 
 ## Overview
 <table border="2" bordercolorlight="#b9dcff" bordercolordark="#006fdd">
