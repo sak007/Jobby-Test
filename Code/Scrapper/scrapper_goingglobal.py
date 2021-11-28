@@ -9,7 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 import traceback
 
-def get_jobs(role, location,country, no_of_jobs_to_retrieve, all_skills):
+def get_jobs(role, location, no_of_jobs_to_retrieve, all_skills,country="us"):
     match_threshold=1
     url =  'https://www.goinglobal.com/job-search/results?keywords={0}%2C%2C&location={1}&country={2}&sort=relevance&language'.format(
         role,
@@ -38,6 +38,7 @@ def get_jobs(role, location,country, no_of_jobs_to_retrieve, all_skills):
                 job["description"] = raw_job_data.find_next("div", {"class": "job-teaser"}).get_text()
                 job["company"] = raw_job_data.find_next("div", {"class": "job-meta"}).get_text()
                 job["extras"] = raw_job_data.find_next("div", {"class": "job-extras"}).get_text()
+                job["skills"] = helper.extract_skills(job["description"] , all_skills)
                 no_of_jobs_to_retrieve-=1
                 jobs.append(job)
     except Exception as e:
@@ -51,10 +52,10 @@ if __name__ == '__main__':
     jobs = get_jobs(
         "Programmer",
         "",
-        "us",
         10,
-        "Programmer"
-    )
+        ["Programming","Analytic","Experience","Game"]
+    ) 
     print("Finished scrapping job.")
     for job in jobs:
-        print("{0} ||| {1}".format(job["title"],job["company"]))
+        print("{0} ||| {1}".format(job["title"],job["skills"]))
+  
