@@ -39,6 +39,6 @@ def get_jobs(role, location, no_of_jobs_to_retrieve, all_skills):
     return jobs
 
 
-if __name__ == '__main__':
-    ans = get_jobs("Software Engineer", "Raleigh", 200, helper.get_all_skills())
-    print(ans)
+# if __name__ == '__main__':
+#     ans = get_jobs("Software Engineer", "Raleigh", 200, helper.get_all_skills())
+#     print(ans)
