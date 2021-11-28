@@ -23,7 +23,7 @@ jobs:
         echo requirements installed
     - name: Run the tests
       run: |
-          cd tests
+          cd test
           pip install -r requirements.txt
           pytest --cov=./
     - name: Upload coverage to Codecov
