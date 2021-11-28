@@ -72,7 +72,7 @@ def generate_job_map(job_board_role_mp, all_skills):
             if (jb == 'LINKEDIN'):
                 j = linkedin_scrapper.get_jobs(rl[0],rl[1],10, all_skills)
             elif (jb == 'INDEED'):
-                j = indeed_scraper.linkedin_scrapper.get_jobs(rl[0],rl[1],10, all_skills)
+                j = indeed_scraper.get_jobs(rl[0],rl[1],10, all_skills)
             job_map[jb][rl] = j
     return job_map
 
