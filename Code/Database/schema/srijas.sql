@@ -103,9 +103,18 @@ INSERT INTO skill_master(skill_title) VALUES
 ("Bootstrap"),
 ("Swift"),
 ("Algorithms"),
+("Computer Science"),
+("Problem Solving"),
+("JS"),
+("C#"),
+("Coding"),
+("Data Structures"),
 ("Fortran");
 
 INSERT INTO job_board (name) VALUES
 ('LINKEDIN'),
-('GLASSDOOR');
+('ZIPRECRUITER'),
+('INDEED'),
+('GOINGLOBAL'),
+('MONSTER');
 COMMIT;
