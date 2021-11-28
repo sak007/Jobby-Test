@@ -32,7 +32,7 @@ https://user-images.githubusercontent.com/32881355/140453003-f6133bbc-b7ec-4d4a-
 
 
 
-# S.R.I.J.A.S.
+# Jobby
 ## Job Search was never this easy
 Smart-Resume-Interpreter-And-Job-Alert-System is an application that makes your job search easy and less frustrating.
 With SRIJAS, you can upload your resume and job which you want to search for. The application will browse Linkedin and Glassdoor websites to search for the jobs.
