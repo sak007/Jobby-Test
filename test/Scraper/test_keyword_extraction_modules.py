@@ -1,9 +1,5 @@
-import pytest
-import sys
-# sys.path.append("../code/Scrapper")
-from code.keyword_extraction_modules import get_user_id_to_list_of_job_ids
-import code.keyword_extraction_modules as kem
-
+from importlib.machinery import SourceFileLoader
+kem = SourceFileLoader('keyword_extraction_modules', 'code/Scraper/keyword_extraction_modules.py').load_module()
 
 resume_skills_dict = {"res1": [1, 2, 3, 4]}
 links_description_dict = {"link1": "This description has java and python class."}
@@ -13,7 +9,7 @@ db_connection = ""
 
 
 def test_main_function():
-  assert get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, db_connection, total_skills, threshold) == {'res1': ['link1']}
+  assert kem.get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, db_connection, total_skills, threshold) == {'res1': ['link1']}
 
 
 def test_match_both_lists_empty():
