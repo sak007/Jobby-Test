@@ -42,11 +42,11 @@ jobs:
           command: |
             cd tests
             pytest
-      - run:
-          name: Run php tests
-          command: |
-            cd Code/Web_app
-            php test.php
+      # - run:
+      #     name: Run php tests
+      #     command: |
+      #       cd Code/Web_app
+      #       php test.php
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
