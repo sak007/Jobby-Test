@@ -1,16 +1,17 @@
 from setuptools import setup
 
 setup(
-    name='SRIJAS',
-    version='1.0',
-    description='Project Phase 1 submission.',
-    author='Parth Vijaykumar Patel',
-    author_email='pvpatel2#ncsu.edu',
+    name='Jobby',
+    version='3.0',
+    description='Project Phase 3 submission.',
+    author='Ashok Kumar Selvam',
+    author_email='akashokkumar300#@mail.com',
     packages=[],
     long_description="""\
         Hands on for the standard github repo files.
         .gitignore
-        .travis.yml
+        .circleci/
+            .config.yml
         CITATION.md : fill on once you've got your ZENODO DOI going
         CODE-OF-CONDUCT.md
         CONTRIBUTING.md
@@ -18,8 +19,6 @@ setup(
         README.md
         setup.py
         requirements.txt
-        data/
-          README.md
         test/
           README.md
         code/
