@@ -16,10 +16,12 @@ def get_jobs(role, location, no_jobs, allskills):
         print(URL)
         print("Connection Failed")
     soup = BeautifulSoup(page.text, "html.parser")
+    # print(soup.encode("utf-8"))
 
     results = soup.find_all('a', attrs={'class': re.compile('tapItem fs-unmask result job_.*')})
     urls = []
     for result in results:
+        print(result['href'])
         if(result['href'][0:8] == '/rc/clk?'):
             urls.append("https://www.indeed.com/viewjob?" + result['href'][8:])
         elif result['href'][0:8] == '/pagead/':
@@ -57,6 +59,6 @@ def get_jobs(role, location, no_jobs, allskills):
     return jobs
 
 
-if __name__ == '__main__':
-    ans = get_jobs("Software Engineer", "Raleigh", 200, helper.get_all_skills())
-    print(ans)
+# if __name__ == '__main__':
+#     ans = get_jobs("Software Engineer", "Raleigh", 200, helper.get_all_skills())
+#     print(ans)
