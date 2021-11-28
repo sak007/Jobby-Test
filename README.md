@@ -1,5 +1,4 @@
-![Jobby_LOGO](https://user-images.githubusercontent.com/40118578/135184051-73acf9be-07c1-4c98-9730-68fa161f6a1b.png)
-
+![Jobby_Logo](https://user-images.githubusercontent.com/25822636/143766903-78c31e5e-508d-42fa-8313-c741d278f476.jpg)
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
