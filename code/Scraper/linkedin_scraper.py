@@ -37,8 +37,3 @@ def get_jobs(role, location, no_of_jobs_to_retrieve, all_skills):
     except Exception:
         traceback.print_exc()
     return jobs
-
-
-# if __name__ == '__main__':
-#     ans = get_jobs("Software Engineer", "Raleigh", 200, helper.get_all_skills())
-#     print(ans)
