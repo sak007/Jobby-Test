@@ -4,10 +4,11 @@ from email.mime.text import MIMEText
 from socket import gaierror
 import smtplib
 import json
-import linkedin_scrapper
+import linkedin_scraper
 import indeed_scraper
-import scrapper_glassdoor
+import monster_scraper
 import helper
+import time
 
 def run():
     properties = open('parameters.json')
@@ -68,11 +69,14 @@ def generate_job_map(job_board_role_mp, all_skills):
     for jb in job_board_role_mp.keys():
         job_map[jb] = {}
         for rl in job_board_role_mp[jb]:
+            time.sleep(30)
             j = []
             if (jb == 'LINKEDIN'):
-                j = linkedin_scrapper.get_jobs(rl[0],rl[1],10, all_skills)
+                j = linkedin_scraper.get_jobs(rl[0],rl[1],10, all_skills)
             elif (jb == 'INDEED'):
                 j = indeed_scraper.get_jobs(rl[0],rl[1],10, all_skills)
+            elif (jb == 'MONSTER'):
+                j = monster_scraper.get_jobs(rl[0],rl[1],10, all_skills)
             job_map[jb][rl] = j
     return job_map
 
