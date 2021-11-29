@@ -304,3 +304,28 @@ def test_get_user_skills_map_empty_list(mocker):
     user_skills_map = helper.get_user_skills_map()
 
     assert user_skills_map == {}
+
+
+def test_match_percentage_both_empty():
+    result = helper.match_percentage([], [])
+    assert result == "0.0%"
+
+
+def test_match_percentage_first_empty():
+    result = helper.match_percentage([], ['Java', 'C++', 'Python'])
+    assert result == "0.0%"
+
+
+def test_match_percentage_second_empty():
+    result = helper.match_percentage(['Java', 'C++', 'Python'], [])
+    assert result == "0.0%"
+
+
+def test_match_percentage_with_matching():
+    result = helper.match_percentage(['Java', 'Python'], ['Java', 'C++', 'Python'])
+    assert result == "66.67%"
+
+
+def test_match_percentage_without_matching():
+    result = helper.match_percentage(['C++', 'Spring'], ['Java', 'Python'])
+    assert result == "0.0%"
