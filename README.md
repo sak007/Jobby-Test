@@ -5,13 +5,15 @@
 [![Github](https://img.shields.io/badge/language-python-red.svg)](https://www.python.org)
 [![GitHub issues](https://img.shields.io/github/issues/sak007/Jobby)](https://github.com/sak007/Jobby/issues?q=is%3Aopen+is%3Aissue)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/sak007/Jobby)](https://github.com/sak007/Jobby/issues?q=is%3Aissue+is%3Aclosed)
+
 [![Github pull requests](https://img.shields.io/github/issues-pr/sak007/Jobby)](https://github.com/sak007/Jobby/pulls)
 [![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/sak007/Jobby)](https://github.com/sak007/Jobby/pulls?q=is%3Apr+is%3Aclosed)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646667.svg)](https://doi.org/10.5281/zenodo.5646667)
+
+[![version](https://img.shields.io/badge/version-3.0-blue)](https://github.com/sak007/Jobby/releases/tag/v3.0)
 [![Build Status](https://circleci.com/gh/sak007/Jobby/tree/main.svg?style=svg)](https://circleci.com/gh/sak007/Jobby/tree/main)
 [![codecov](https://codecov.io/gh/sak007/Jobby/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/sak007/Jobby)
-[![version](https://img.shields.io/badge/version-3.0-blue)](https://github.com/sak007/Jobby/releases/tag/v3.0)
-[![github workflow](https://github.com/sak007/Jobby/actions/workflows/unit_test.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/unit_test.yml)
+
 [![github workflow](https://github.com/sak007/Jobby/actions/workflows/style_checker.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/style_checker.yml)
 [![github workflow](https://github.com/sak007/Jobby/actions/workflows/main.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/main.yml)
 [![github workflow](https://github.com/sak007/Jobby/actions/workflows/code_cov.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/code_cov.yml)
@@ -19,22 +21,20 @@
 [![github workflow](https://github.com/sak007/Jobby/actions/workflows/Respost.yml/badge.svg)](https://github.com/sak007/Jobby/actions/workflows/Respost.yml)
 
 
-
-
-
-## Phase 2
+## Phase 3
 
 https://user-images.githubusercontent.com/32881355/140453003-f6133bbc-b7ec-4d4a-bb2e-f6744236884f.mp4
 
 
 
+![](https://media.giphy.com/media/T1HNGhvx14iru/giphy.gif)
 
 
 # Jobby
 ## Job Hunting Made Easy
-Smart-Resume-Interpreter-And-Job-Alert-System is an application that makes your job search easy and less frustrating.
-With SRIJAS, you can upload your resume and job which you want to search for. The application will browse Linkedin and Glassdoor websites to search for the jobs.
-The links of the jobs that matches with the skills in your resume, will be sent to you via email.
+Jobby is your go-to one stop application that makes your job search easy and less frustrating.
+With Jobby, you can upload your resume and job which you want to search for. The application will browse multiple Job Portals to search for the best jobs that match your requirement.
+The portal links of the jobs that matches with your skills, will be sent to you via email everyday at **10:30am EST**. You'll never miss another job posting.
 
 This is our submission for the Project for Software Engineering CSC 510 Fall 2021.
 
@@ -98,8 +98,8 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 ---
 1. Clone the Github repository to a desired location on your computer. You will need [git](https://git-scm.com/) to be preinstalled on your machine. Once the repository is cloned, you will then ```cd``` into the local repository.
 ```
-git clone https://github.com/SmayanaReddy/SRIJAS.git
-cd SRIJAS
+git clone https://github.com/sak007/Jobby.git
+cd Jobby
 ```
 2. This project uses Python 3, so make sure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All requirements of the project are listed in the ```requirements.txt``` file. Use pip to install all of those.
 ```
