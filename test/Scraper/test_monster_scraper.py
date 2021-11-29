@@ -1,5 +1,3 @@
-import requests
-
 from importlib.machinery import SourceFileLoader
 monster_scraper = SourceFileLoader('monster_scraper', 'code/Scraper/monster_scraper.py').load_module()
 
