@@ -59,16 +59,7 @@
              <div class="card shadow-lg">
                <div class="card-body p-5">
                  <h1 class="fs-4 card-title fw-bold mb-4">Registered Job Boards</h1>
-                 <form method="POST" action="" class="needs-validation" novalidate="" autocomplete="off">
-
-                   <?php
-                    foreach ($job_board_array as $jb) {
-                      echo "<div class='mb-3'>";
-                      echo "<label class='mb-2'>" . $jb . "</label>";
-                      echo "</div>";
-                    }
-                    ?>
-                   <div>
+                 <div>
                      <!-- Display User Details -->
                      <?php
                       include('connectDB.php');
@@ -89,13 +80,12 @@
                         echo "</td></tr>";
                       }
                       ?>
-
                    </div>
                    <div>
                      <!-- Button for updating resume -->
                      <?php
                       if (isset($_POST['submit'])) {
-                        header("Location: updateResume.php");
+                        header("Location: register.php");
                         exit;
                       }
                       ?>
