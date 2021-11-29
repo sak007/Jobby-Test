@@ -10,6 +10,7 @@ import simplyhired_scraper
 import helper
 import time
 
+
 def run():
     connection = helper.db_connect()
     data = get_user_notification_info(connection)
