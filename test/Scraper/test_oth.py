@@ -11,5 +11,5 @@ def test_indeed_scraper_nonworking(mocker):
     mocker.patch.object(goinglobal_scraper, 'requests')
     goinglobal_scraper.requests.status_code.return_value = 999
     goinglobal_scraper.requests.get.return_value = requests.get("https://strayer.wd1.myworkdayjobs.com/en-US/HB_Careers/job/Remote/Python-Software-Engineering-Teaching-Assistant--Part-Time-_R13393")
-    ans = goinglobal_scraper.get_jobs("Software Engineer", "Remote", 5, ['Java', 'Python', 'Coding'])
-    assert ans is not None
+    final_result = goinglobal_scraper.get_jobs("Software Engineer", "Remote", 5, ['Java', 'Python', 'Coding'])
+    assert final_result is not None
