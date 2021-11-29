@@ -7,7 +7,7 @@ import json
 import linkedin_scraper
 import indeed_scraper
 import monster_scraper
-import scrapper_goingglobal
+import going_global_scraper
 import helper
 import time
 
