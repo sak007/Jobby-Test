@@ -18,3 +18,32 @@ def test_get_all_skills(mocker):
     allskills = helper.get_all_skills()
     print(allskills)
     assert allskills is not None
+
+
+def test_extract_skills_empty_description():
+    result = helper.extract_skills("", ['Java', 'C++', 'Python'])
+    assert result == []
+
+
+def test_extract_skills_empty_skills():
+    result = helper.extract_skills("Java C++ Python", [])
+    assert result == []
+
+
+def test_extract_skills_empty():
+    result = helper.extract_skills("", [])
+    assert result == []
+
+
+def test_extract_skills_with_matching():
+    result = helper.extract_skills("Java C++", ["Java", "C++", "Python"])
+    assert result is not None
+    assert result != []
+    assert "Java" in result
+    assert "C++" in result
+    assert "Python" not in result
+
+
+def test_extract_skills_without_matching():
+    result = helper.extract_skills("Windows Soft Skills", ['Java', 'C++', 'Python'])
+    assert result == []
