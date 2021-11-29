@@ -15,6 +15,11 @@ jobs:
       - run:
           name: Run tests
           command: coverage run -m  pytest -q
+      - run:
+        name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
 workflows:
   sample:
