@@ -6,7 +6,7 @@ class temp_request:
     def __init__(self, status_code, content, text):
         self.status_code = status_code
         self.content = content
-        self.text ="test text for description"
+        self.text = "test text for description"
 
 
 def test_get_jobs(mocker):
