@@ -16,7 +16,7 @@
       */
   $paramsFile = file_get_contents("parameters.json");
   $params = json_decode($paramsFile, true);
-
+  $cities = array("Austin, Texas", "Dallas, Texas", "Raleigh, North Carolina","San Jose, California", "Charlotte, North Carolina","Seattle, Washington","San Francisco, California","Atlanta, Georgia","Huntsville, Alabama","Denver, Colorado","Washington, DC","Boulder, Colorado","Durham-Chapel Hill, North Carolina","Columbus, Ohio","Colorado Springs, Colorado","Boston, Massachusetts","Baltimore, Maryland","Madison, Wisconsin","San Diego, California","Trenton, New Jersey");
   /**
      * @var servername string and
      * @var username string and
@@ -84,7 +84,16 @@
 
                 <div class="mb-3">
                   <label class="mb-2 text-muted" for="inputLocation">Location</label>
-                  <input id="location" type="text" class="form-control" name="location" placeholder="Enter your Location" required>
+                  <select class="custom-select mr-sm-2 form-control" id="location" name="location" required>
+                   <option selected>Select City...</option>
+                   <?php
+                   $count = 0;
+                   foreach($cities as $city){
+                   echo "<option value='".explode(",",$city)[0]."'>".$city."</option>";
+                   $count = $count+1;
+                   }
+                   ?>
+                  </select>
                   <div class="invalid-feedback"> Location is required </div>
                 </div>
 
