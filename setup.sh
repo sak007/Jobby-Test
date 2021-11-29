@@ -1,3 +1,4 @@
+pip install -r requirements.txt
 flag=0
 server_name=$(grep "server_name" db.properties|cut -d'=' -f2)
 if [ -z $server_name ]
