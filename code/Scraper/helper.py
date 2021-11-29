@@ -42,6 +42,8 @@ def matching_skills(skills1, skills2):
 
 
 def match_percentage(user_skills, job_skills):
+    if len(job_skills) == 0:
+        return "0.0%"
     return str(round((len(matching_skills(user_skills, job_skills)) / len(job_skills)) * 100, 2)) + "%"
 
 
