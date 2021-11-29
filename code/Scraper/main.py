@@ -12,7 +12,6 @@ import simplyhired_scraper
 import helper
 import time
 
-
 def run():
     properties = open('parameters.json')
     data = json.load(properties)

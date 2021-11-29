@@ -1,4 +1,5 @@
 """
+
 Scraper for GoingGlobal
 
 @author Rithik Jain
