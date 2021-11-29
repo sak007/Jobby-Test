@@ -1,14 +1,25 @@
-import json
 from importlib.machinery import SourceFileLoader
 helper = SourceFileLoader('helper', 'code/Scraper/helper.py').load_module()
 
 
 def test_db_connect(mocker):
-    mocker.patch("builtins.open", return_value=[])
-    mocker.patch.object(helper, 'json')
-    helper.json.load.return_value = json.loads('{"server_name" : "srijas.cd1pfgqpboiq.us-east-1.rds.amazonaws.com", "user_name":"admin", "password": "adminadmin", "db_name": "srijas", "linked_in_pwd":"SRIJASGMAILPWD"}')
+    class mock_connection:
+        def __init__(self, host, database, user, password):
+            pass
+
+        def cursor(a):
+            return mock_cursor
+
+    class mock_cursor:
+        def execute(a):
+            pass
+
+        def fetchall():
+            return []
+
+    mocker.patch.object(helper.mysql.connector, 'connect', mock_connection)
     connection = helper.db_connect()
-    assert connection is not None
+    assert type(connection) == mock_connection
 
 
 def test_get_all_skills(mocker):
@@ -26,6 +37,7 @@ def test_get_all_skills(mocker):
             return skills
 
     mocker.patch.object(helper, 'db_connect', mock_connection)
+
     allskills = helper.get_all_skills()
 
     for s in skills:
