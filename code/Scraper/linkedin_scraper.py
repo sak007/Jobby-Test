@@ -8,6 +8,7 @@ def get_jobs(role, location, no_of_jobs_to_retrieve, all_skills):
     url = "https://www.linkedin.com/jobs/jobs-in-" + location + "?keywords=" + role
     url = url.replace(' ', '%20')
     k1 = requests.get(url)
+    print(type(k1))
     if k1.status_code != 200:
         print(url)
         print("Connection Failed")
