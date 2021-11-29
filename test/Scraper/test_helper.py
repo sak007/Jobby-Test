@@ -195,3 +195,103 @@ def test_filter_jobs_some_matching():
     result = helper.filter_jobs(user_jobs, user_skills)
     assert job1 not in result["a@a.com"]
     assert job2 in result["a@a.com"]
+
+
+def test_get_user_skills_map_with_common(mocker):
+    user_skills_list = [('a@a.com', 'Java'), ('a@a.com', 'Python'), ('a@a.com', 'C++'), ('b@b.com', 'Spring'), ('b@b.com', 'Akka'), ('b@b.com', 'Java')]
+
+    class mock_connection:
+        def cursor(a):
+            return mock_cursor
+
+    class mock_cursor:
+        def execute(a):
+            pass
+
+        def fetchall():
+            return user_skills_list
+
+    mocker.patch.object(helper, 'db_connect', mock_connection)
+
+    user_skills_map = helper.get_user_skills_map()
+
+    assert 'a@a.com' in user_skills_map.keys()
+    assert 'b@b.com' in user_skills_map.keys()
+    assert 'Java' in user_skills_map['a@a.com']
+    assert 'Python' in user_skills_map['a@a.com']
+    assert 'C++' in user_skills_map['a@a.com']
+    assert 'Spring' in user_skills_map['b@b.com']
+    assert 'Akka' in user_skills_map['b@b.com']
+    assert 'Java' in user_skills_map['b@b.com']
+
+
+def test_get_user_skills_map_without_common(mocker):
+    user_skills_list = [('a@a.com', 'Java'), ('a@a.com', 'Python'), ('a@a.com', 'C++'), ('b@b.com', 'Spring'), ('b@b.com', 'Akka')]
+
+    class mock_connection:
+        def cursor(a):
+            return mock_cursor
+
+    class mock_cursor:
+        def execute(a):
+            pass
+
+        def fetchall():
+            return user_skills_list
+
+    mocker.patch.object(helper, 'db_connect', mock_connection)
+
+    user_skills_map = helper.get_user_skills_map()
+
+    assert 'a@a.com' in user_skills_map.keys()
+    assert 'b@b.com' in user_skills_map.keys()
+    assert 'Java' in user_skills_map['a@a.com']
+    assert 'Python' in user_skills_map['a@a.com']
+    assert 'C++' in user_skills_map['a@a.com']
+    assert 'Spring' in user_skills_map['b@b.com']
+    assert 'Akka' in user_skills_map['b@b.com']
+
+
+def test_get_user_skills_map_one_user(mocker):
+    user_skills_list = [('a@a.com', 'Java'), ('a@a.com', 'Python'), ('a@a.com', 'C++')]
+
+    class mock_connection:
+        def cursor(a):
+            return mock_cursor
+
+    class mock_cursor:
+        def execute(a):
+            pass
+
+        def fetchall():
+            return user_skills_list
+
+    mocker.patch.object(helper, 'db_connect', mock_connection)
+
+    user_skills_map = helper.get_user_skills_map()
+
+    assert 'a@a.com' in user_skills_map.keys()
+    assert 'Java' in user_skills_map['a@a.com']
+    assert 'Python' in user_skills_map['a@a.com']
+    assert 'C++' in user_skills_map['a@a.com']
+
+
+def test_get_user_skills_map_empty_list(mocker):
+    user_skills_list = []
+
+    class mock_connection:
+        def cursor(a):
+            return mock_cursor
+
+    class mock_cursor:
+        def execute(a):
+            pass
+
+        def fetchall():
+            return user_skills_list
+
+    mocker.patch.object(helper, 'db_connect', mock_connection)
+
+    user_skills_map = helper.get_user_skills_map()
+
+    assert user_skills_map == {}
