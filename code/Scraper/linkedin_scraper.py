@@ -17,6 +17,7 @@ def get_jobs(role, location, no_of_jobs_to_retrieve, all_skills):
     jobs = []
     job_role = []
     job_details = {}
+    print(string1)
     try:
         for i in range(len(string1)):
             if no_of_jobs_to_retrieve > 0:
