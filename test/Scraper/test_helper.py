@@ -11,6 +11,7 @@ def test_db_connect(mocker):
         'password': None,
         'db_name': None
     }
+
     class mock_connection:
         def __init__(self, host, database, user, password):
             pass
