@@ -21,6 +21,7 @@
      <div class="header-right">
        <a class="active" href="home.php">Home</a>
        <a href="register.php">Register</a>
+       <a href="updateResume.php">Upload Resume</a>
        <a href="logout.php">Logout</a>
      </div>
    </div>
@@ -58,11 +59,11 @@
 
              <div class="card shadow-lg">
                <div class="card-body p-5">
-                 <h1 class="fs-4 card-title fw-bold mb-4">Registered Job Boards</h1>
+                 <h1 class="fs-4 card-title fw-bold mb-4">Welcome to Jobby!</h1>
                  <form method="POST" action="" enctype="multipart/form-data" class="needs-validation" novalidate="" autocomplete="off">
                    <?php
 
-                    // Get User Details from the database 
+                    // Get User Details from the database
                     $user_email = $_SESSION['user'];
                     $userNameQuery = "select um.user_fname, um.user_lname from user_master um where um.user_email = '" . $user_email . "'";
                     $userNameResult = $conn->query($userNameQuery);
@@ -79,7 +80,7 @@
                     echo "<b>Last Name</b>\t\t\t&emsp;" . ucfirst($namearray[1]) . "<br>";
                     echo "<b>User Email</b>\t\t\t&emsp;", $user_email;
                     echo "</td>";
-                    
+
                     ?>
                    <br>
                    <br>

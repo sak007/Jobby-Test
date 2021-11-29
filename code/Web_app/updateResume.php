@@ -22,8 +22,9 @@
 <div class="header">
   <img src="logo.jpg" alt="logo">
   <div class="header-right">
-    <a class="active" href="home.php">Home</a>
+    <a href="home.php">Home</a>
     <a href="register.php">Register</a>
+    <a class="active" href="updateResume.php">Upload Resume</a>
     <a href="logout.php">Logout</a>
   </div>
 </div>
@@ -51,9 +52,9 @@
                     array_push($namearray, $row["user_lname"]);
                   }
                   echo "<td width='80' style='text-align:center;'>";
-                  echo "<b>First Name</b>\t\t\t&emsp;".ucfirst($namearray[0])."<br>";
-                  echo "<b>Last Name</b>\t\t\t&emsp;".ucfirst($namearray[1])."<br>";
-                  echo "<b>User Email</b>\t\t\t", $user_email;
+                  echo "<b>First Name</b>\t\t\t&emsp;" . ucfirst($namearray[0]) . "<br>";
+                  echo "<b>Last Name</b>\t\t\t&emsp;" . ucfirst($namearray[1]) . "<br>";
+                  echo "<b>User Email</b>\t\t\t&emsp;", $user_email;
                   echo "</td>";
                 ?>
                 <br>
@@ -120,10 +121,10 @@ else{
 }
 $stmt->close();
 $conn->close();
+ob_end_clean();
 sleep(2);
 header('Location: home.php');
 }
-ob_end_clean();
 ?>
 </body>
 </html>

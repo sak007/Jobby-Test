@@ -18,6 +18,7 @@
  <div class="header-right">
    <a href="home.php">Home</a>
    <a class="active" href="register.php">Register</a>
+   <a href="updateResume.php">Upload Resume</a>
    <a href="logout.php">Logout</a>
  </div>
 </div>
@@ -56,6 +57,7 @@
           <div class="card shadow-lg">
             <div class="card-body p-5">
               <h1 class="fs-4 card-title fw-bold mb-4">Register For Job Boards</h1>
+              <div class='mb-3'> Get notified everyday @ 10:30am EST </div>
               <form method="POST" action="" class="needs-validation" novalidate="" autocomplete="off">
 
                 <?php
