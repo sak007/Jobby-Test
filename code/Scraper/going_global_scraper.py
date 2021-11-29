@@ -1,5 +1,5 @@
 """
-Scrapper for GoingGlobal
+Scraper for GoingGlobal
 
 @author Rithik Jain
 """
