@@ -3,6 +3,14 @@ helper = SourceFileLoader('helper', 'code/Scraper/helper.py').load_module()
 
 
 def test_db_connect(mocker):
+    mocker.patch.object(helper, 'open')
+    mocker.patch.object(helper.json, 'load')
+    helper.json.load.return_value = {
+        'server_name': None,
+        'user_name': None,
+        'password': None,
+        'db_name': None
+    }
     class mock_connection:
         def __init__(self, host, database, user, password):
             pass
