@@ -3,9 +3,10 @@ linkedin_scraper = SourceFileLoader('linkedin_scraper', 'code/Scraper/linkedin_s
 
 
 class temp_request:
-    def __init__(self, status_code, content):
+    def __init__(self, status_code, content, text):
         self.status_code = status_code
         self.content = content
+        self.text ="test text for description"
 
 
 def test_get_jobs(mocker):
@@ -13,7 +14,7 @@ def test_get_jobs(mocker):
     text = ""
     with open("test/Scraper/linkedin_test_page.html", "r", encoding='utf-8') as f:
         text = f.read()
-    x = temp_request(200, text)
+    x = temp_request(200, text, "")
     mocker.patch.object(linkedin_scraper, 'requests')
     linkedin_scraper.requests.get.return_value = x
 
@@ -25,7 +26,7 @@ def test_get_jobs_nonworking(mocker):
     text = ""
     with open("test/Scraper/linkedin_test_page.html", "r", encoding='utf-8') as f:
         text = f.read()
-    x = temp_request(900, text)
+    x = temp_request(900, text, "")
 
     mocker.patch.object(linkedin_scraper, 'requests')
     linkedin_scraper.requests.get.return_value = x
