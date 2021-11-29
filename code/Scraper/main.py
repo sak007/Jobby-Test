@@ -84,7 +84,7 @@ def generate_job_map(job_board_role_mp, all_skills):
             elif (jb == 'MONSTER'):
                 j = monster_scraper.get_jobs(rl[0], rl[1], 10, all_skills)
             elif (jb == 'GOINGLOBAL'):
-                j = scrapper_goingglobal.get_jobs(rl[0], rl[1], 10, all_skills)
+                j = going_global_scraper.get_jobs(rl[0], rl[1], 10, all_skills)
             elif (jb == 'SIMPLYHIRED'):
                 j = simplyhired_scraper.get_jobs(rl[0], rl[1], 10, all_skills)
             job_map[jb][rl] = j
