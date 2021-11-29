@@ -62,3 +62,4 @@ schedule
 coverage
 codecov
 flake8
+pytest-mock
