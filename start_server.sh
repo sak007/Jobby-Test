@@ -1,2 +1,2 @@
 bash setup.sh
-python3 code/Scraper/scheduled_notifier.py
+python code/Scraper/scheduled_notifier.py

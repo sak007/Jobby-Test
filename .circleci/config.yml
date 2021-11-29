@@ -14,7 +14,9 @@ jobs:
           pkg-manager: pip
       - run:
           name: Run tests
-          command: coverage run -m  pytest -q
+          command: |
+            flake8 --ignore=E501
+            coverage run -m  pytest -q
 
 workflows:
   sample:

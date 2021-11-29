@@ -1,9 +1,7 @@
-import mysql.connector
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from socket import gaierror
 import smtplib
-import json
 import linkedin_scraper
 import indeed_scraper
 import monster_scraper
@@ -12,11 +10,9 @@ import simplyhired_scraper
 import helper
 import time
 
+
 def run():
-    properties = open('parameters.json')
-    data = json.load(properties)
-    connection = db_connect(properties)
-    all_skills = get_all_skills(connection)
+    connection = helper.db_connect()
     data = get_user_notification_info(connection)
     user_info = generate_user_info(data)
     user_job_board_list = generate_user_job_board_list(data)
@@ -28,7 +24,10 @@ def run():
     job_map = generate_job_map(job_board_role_mp, all_skills)
 
     user_jobs = generate_user_jobs_mp(user_info, user_job_board_list, job_map)
-    send_mail(user_jobs, user_info)
+
+    user_skills_map = helper.get_user_skills_map()
+    user_jobs = helper.filter_jobs(user_jobs, user_skills_map)
+    send_mail(user_jobs, user_info, user_skills_map)
 
 
 def generate_user_info(data):
@@ -75,7 +74,7 @@ def generate_job_map(job_board_role_mp, all_skills):
         for rl in job_board_role_mp[jb]:
             time.sleep(30)
             j = []
-            print ("Scraping " + jb + " for " + rl[0] + " in " + rl[1] + "...")
+            print("Scraping " + jb + " for " + rl[0] + " in " + rl[1] + "...")
             if (jb == 'LINKEDIN'):
                 j = linkedin_scraper.get_jobs(rl[0], rl[1], 10, all_skills)
             elif (jb == 'INDEED'):
@@ -103,7 +102,7 @@ def generate_job_board_role_mp(user_job_board_list, user_info):
     return job_board_role_mp
 
 
-def send_mail(user_jobs, user_info):
+def send_mail(user_jobs, user_info, user_skills):
     port = 587
     smtp_server = "smtp.gmail.com"
     login = "srijas.alerts@gmail.com"
@@ -125,7 +124,9 @@ def send_mail(user_jobs, user_info):
         temp_body = ""
         html_start = """<html><head></head><body><p><ol>"""
         for job in jobs:
-            temp_body += "<li>" + job['title'] + "<a href=\"" + job['url'] + "\"> Click to Apply </a>"
+            temp_body += "<li>" + job['title'] + "<a href=\"" + job['url'] + "\"> Click to Apply </a><br>"
+            temp_body += "Match Percentage: " + helper.match_percentage(user_skills[user], job['skills']) + "<br>"
+            temp_body += "Matching Skills: " + helper.print_matching_skills(user_skills[user], job['skills'])
         html_end = """</ol></p></body> </html>"""
 
         html = html_start + temp_body + html_end
@@ -153,71 +154,6 @@ def send_mail(user_jobs, user_info):
             print(str(e))
         except smtplib.SMTPException as e:
             print('SMTP error occurred: ' + str(e))
-
-
-def db_connect(properties):
-    properties = open('parameters.json')
-    data = json.load(properties)
-    server_name = data['server_name']
-    user_name = data['user_name']
-    password = data['password']
-    db_name = data['db_name']
-    connection = mysql.connector.connect(host=server_name, database=db_name, user=user_name, password=password)
-    return connection
-
-
-def clean_data(connection):
-    cursor = connection.cursor()
-    offsafety = "SET SQL_SAFE_UPDATES = 0"
-    query1 = "delete from user_resume"
-    query2 = "delete from resume_skills"
-    query3 = "delete from resume_master"
-    query4 = "delete from user_master"
-    onsafety = "SET SQL_SAFE_UPDATES = 1"
-    cursor.execute(offsafety)
-    cursor.execute(query1)
-    cursor.execute(query2)
-    cursor.execute(query3)
-    cursor.execute(query4)
-    cursor.execute(onsafety)
-    connection.commit()
-    pass
-
-
-def get_all_skills(connection):
-    sql_select_Query = "select DISTINCT skill_id,skill_title from skill_master"
-    cursor = connection.cursor()
-    cursor.execute(sql_select_Query)
-    records = cursor.fetchall()
-    all_skills = {}
-    for row in records:
-        all_skills[row[0]] = row[1]
-    return all_skills
-
-
-def get_resume_skills(connection):
-    sql_select_Query2 = "select  resume_id,skill_id from resume_skills"
-    cursor = connection.cursor()
-    cursor.execute(sql_select_Query2)
-    records2 = cursor.fetchall()
-    resume_skills = {}
-    for row in records2:
-        if(row[0]) in resume_skills:
-            resume_skills[row[0]].append(row[1])
-        else:
-            resume_skills[row[0]] = [row[1]]
-    return resume_skills
-
-
-def get_emailing_list(connection):
-    email_id_list = {}
-    sql_select_Query3 = "SELECT resume_id,user_email,user_fname from user_master um join user_resume ur on um.user_id=ur.user_id"
-    cursor = connection.cursor()
-    cursor.execute(sql_select_Query3)
-    records_email = cursor.fetchall()
-    for row in records_email:
-        email_id_list[row[0]] = [row[1], row[2]]
-    return email_id_list
 
 
 def get_user_notification_info(connection):
