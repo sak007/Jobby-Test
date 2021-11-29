@@ -30,8 +30,7 @@ https://user-images.githubusercontent.com/32881355/140453003-f6133bbc-b7ec-4d4a-
 ![](https://media.giphy.com/media/T1HNGhvx14iru/giphy.gif)
 
 
-# Jobby
-## Job Hunting Made Easy
+# Jobby : Job Hunting Made Easy
 Jobby is your go-to one stop application that makes your job search easy and less frustrating.
 With Jobby, you can upload your resume and job which you want to search for. The application will browse multiple Job Portals to search for the best jobs that match your requirement.
 The portal links of the jobs that matches with your skills, will be sent to you via email everyday at **10:30am EST**. You'll never miss another job posting.
