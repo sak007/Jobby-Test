@@ -149,3 +149,49 @@ def test_print_matching_skills_with_matching():
 def test_print_matching_skills_without_matching():
     result = helper.print_matching_skills(['C++', 'Spring'], ['Java', 'Python'])
     assert result == ""
+
+
+def test_filter_jobs_matching():
+    job = {
+        "skills": ['Java', 'C++', 'Python', 'Spring', 'Akka', 'Microservice', 'HTML', 'PHP', 'SQL', 'JQuery']
+    }
+    user_jobs = {
+        "a@a.com": [job]
+    }
+    user_skills = {
+        "a@a.com": ['Java', 'C++', 'Python', 'Spring', 'Akka', 'HTML', 'SQL']
+    }
+    result = helper.filter_jobs(user_jobs, user_skills)
+    assert job in result["a@a.com"]
+
+
+def test_filter_jobs_not_matching():
+    job = {
+        "skills": ['Java', 'C++', 'Python', 'Spring', 'Akka', 'Microservice', 'HTML', 'PHP', 'SQL', 'JQuery']
+    }
+    user_jobs = {
+        "a@a.com": [job]
+    }
+    user_skills = {
+        "a@a.com": ['Docker', 'Jenkins', 'Groovy', 'Pipeline', 'CI/CD', 'Kubernetes', 'AWS']
+    }
+    result = helper.filter_jobs(user_jobs, user_skills)
+    assert job not in result["a@a.com"]
+
+
+def test_filter_jobs_some_matching():
+    job1 = {
+        "skills": ['Java', 'C++', 'Python', 'Spring', 'Akka', 'Microservice', 'HTML', 'PHP', 'SQL', 'JQuery']
+    }
+    job2 = {
+        "skills": ['Docker', 'CI/CD', 'Jenkins', 'Groovy', 'Microservice', 'HTML', 'PHP', 'SQL', 'JQuery']
+    }
+    user_jobs = {
+        "a@a.com": [job1, job2]
+    }
+    user_skills = {
+        "a@a.com": ['Docker', 'Jenkins', 'Groovy', 'Pipeline', 'CI/CD', 'Kubernetes', 'AWS']
+    }
+    result = helper.filter_jobs(user_jobs, user_skills)
+    assert job1 not in result["a@a.com"]
+    assert job2 in result["a@a.com"]
