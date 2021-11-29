@@ -47,3 +47,32 @@ def test_extract_skills_with_matching():
 def test_extract_skills_without_matching():
     result = helper.extract_skills("Windows Soft Skills", ['Java', 'C++', 'Python'])
     assert result == []
+
+
+def test_matching_skills_both_empty():
+    result = helper.matching_skills([], [])
+    assert result == []
+
+
+def test_matching_skills_first_empty():
+    result = helper.matching_skills([], ['Java', 'C++', 'Python'])
+    assert result == []
+
+
+def test_matching_skills_second_empty():
+    result = helper.matching_skills(['Java', 'C++', 'Python'], [])
+    assert result == []
+
+
+def test_matching_skills_with_matching():
+    result = helper.matching_skills(['Java', 'C++', 'Python'], ['Java', 'Python'])
+    assert result is not None
+    assert result != []
+    assert "Java" in result
+    assert "C++" not in result
+    assert "Python" in result
+
+
+def test_matching_skills_without_matching():
+    result = helper.matching_skills(['C++', 'Spring'], ['Java', 'Python'])
+    assert result == []
