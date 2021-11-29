@@ -8,20 +8,20 @@ jobs:
   build-and-test:
     docker:
       - image: cimg/python:3.8
-#       - image: cimg/php:7.4
+      - image: cimg/php:7.4
     steps:
       - checkout
       - python/install-packages:
           pkg-manager: pip
-#       - php/install-php
+      - php/install-php
       - run:
           name: Run tests
           command: coverage run -m  pytest -q
-      # - run:
-      #     name: Run php tests
-      #     command: |
-      #       cd Code/Web_app
-      #       php test.php
+       - run:
+           name: Run php tests
+           command: |
+             cd code/Web_app
+             php test.php
 
 workflows:
   sample:
