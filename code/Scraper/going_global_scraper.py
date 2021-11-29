@@ -1,5 +1,5 @@
 """
-Scrapper for GoingGlobal
+Scraper for GoingGlobal
 
 @author Rithik Jain
 """
@@ -41,16 +41,3 @@ def get_jobs(role, location, no_of_jobs_to_retrieve, all_skills, country=""):
     except Exception:
         traceback.print_exc()
     return jobs
-
-
-if __name__ == '__main__':
-    print("Starting scrapping job...")
-    jobs = get_jobs(
-        "Programmer",
-        "",
-        10,
-        ["Programming", "Analytic", "Experience", "Game"]
-    )
-    print("Finished scrapping job.")
-    for job in jobs:
-        print("{0} ||| {1}".format(job["title"], job["skills"]))
