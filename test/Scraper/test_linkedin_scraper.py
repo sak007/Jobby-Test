@@ -1,7 +1,4 @@
-import time
-import requests
 from importlib.machinery import SourceFileLoader
-import json
 linkedin_scraper = SourceFileLoader('linkedin_scraper', 'code/Scraper/linkedin_scraper.py').load_module()
 
 
@@ -15,7 +12,7 @@ def test_get_jobs(mocker):
     # time.sleep(20)
     text = ""
     with open("test/Scraper/linkedin_test_page.html", "r", encoding='utf-8') as f:
-        text= f.read()
+        text = f.read()
     x = temp_request(200, text)
     mocker.patch.object(linkedin_scraper, 'requests')
     linkedin_scraper.requests.get.return_value = x
@@ -27,7 +24,7 @@ def test_get_jobs(mocker):
 def test_get_jobs_nonworking(mocker):
     text = ""
     with open("test/Scraper/linkedin_test_page.html", "r", encoding='utf-8') as f:
-        text= f.read()
+        text = f.read()
     x = temp_request(900, text)
 
     mocker.patch.object(linkedin_scraper, 'requests')
