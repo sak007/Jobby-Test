@@ -59,59 +59,47 @@
              <div class="card shadow-lg">
                <div class="card-body p-5">
                  <h1 class="fs-4 card-title fw-bold mb-4">Registered Job Boards</h1>
-                 <div>
-                     <!-- Display User Details -->
-                     <?php
-                      include('connectDB.php');
+                 <form method="POST" action="" enctype="multipart/form-data" class="needs-validation" novalidate="" autocomplete="off">
+                   <?php
 
-                      $sqlget   = "SELECT * FROM user_master";
-                      $sqldata  = mysqli_query($conn, $sqlget) or die('Error retrieving data');
-                      
-                      echo "<table>";
-                      echo "<tr><th>First Name</th><th>Last Name</th><th>Email</th></tr>";
+                    // Get User Details from the database 
+                    $user_email = $_SESSION['user'];
+                    $userNameQuery = "select um.user_fname, um.user_lname from user_master um where um.user_email = '" . $user_email . "'";
+                    $userNameResult = $conn->query($userNameQuery);
+                    $namearray = array();
 
-                      while($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-                        echo "<tr><td>";
-                        echo $row['user_fname'];
-                        echo "</td><td>";
-                        echo $row['user_lname'];
-                        echo "</td><td>";
-                        echo $row['user_email'];
-                        echo "</td></tr>";
-                      }
-                      ?>
-                   </div>
-                   <div>
+                    while ($row = $userNameResult->fetch_assoc()) {
+                      array_push($namearray, $row["user_fname"]);
+                      array_push($namearray, $row["user_lname"]);
+                    }
+
+                    // Display User Details
+                    echo "<td width='80' style='text-align:center;'>";
+                    echo "<b>First Name</b>\t\t\t&emsp;" . ucfirst($namearray[0]) . "<br>";
+                    echo "<b>Last Name</b>\t\t\t&emsp;" . ucfirst($namearray[1]) . "<br>";
+                    echo "<b>User Email</b>\t\t\t&emsp;", $user_email;
+                    echo "</td>";
+                    
+                    ?>
+                   <br>
+                   <br>
+                   <div class="mb-3">
                      <!-- Button for updating resume -->
-                     <?php
-                      if (isset($_POST['submit'])) {
-                        header("Location: register.php");
-                        exit;
-                      }
-                      ?>
-
-                     <button type="submit" name="updateResume" align="left" class="btn btn-primary ms-auto"> Update Resume </button>
-
+                     <input type="button" value="Update Resume" class="btn btn-primary ms-auto" id="btnUpdateResume" onClick="document.location.href='/updateResume.php'" />
                      <!-- Button for Delete Account -->
-                     <?php
-                      if (isset($_POST['submit'])) {
-                        header("Location: deleteAccount.php");
-                        exit;
-                      }
-                      ?>
-
-                     <button type="submit" name="deleteAccount" align="center" class="btn btn-primary ms-auto"> Delete Account </button>
+                     <input type="button" value="Delete Account" class="btn btn-primary ms-auto" id="btnDeleteAccount" onClick="document.location.href='/deleteAccount.php'" />
                    </div>
+                 </form>
                </div>
              </div>
            </div>
-           </form>
-
          </div>
          <br>
          <div align="center">Made with <span style="color: #e25555;">&hearts;</span>. Contribute on <a href="https://github.com/sak007/SRIJAS" class="text-dark" target="_blank">GitHub</a>.</div>
          <br>
        </div>
+     </section>
+   </div>
  </body>
 
  </html>
