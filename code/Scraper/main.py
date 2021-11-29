@@ -29,7 +29,10 @@ def run():
     job_map = generate_job_map(job_board_role_mp, all_skills)
 
     user_jobs = generate_user_jobs_mp(user_info, user_job_board_list, job_map)
-    send_mail(user_jobs, user_info)
+
+    user_skills_map = helper.get_user_skills_map()
+    user_jobs = helper.filter_jobs(user_jobs, user_skills_map)
+    send_mail(user_jobs, user_info, user_skills_map)
 
 
 def generate_user_info(data):
@@ -76,7 +79,7 @@ def generate_job_map(job_board_role_mp, all_skills):
         for rl in job_board_role_mp[jb]:
             time.sleep(30)
             j = []
-            print ("Scraping " + jb + " for " + rl[0] + " in " + rl[1] + "...")
+            print("Scraping " + jb + " for " + rl[0] + " in " + rl[1] + "...")
             if (jb == 'LINKEDIN'):
                 j = linkedin_scraper.get_jobs(rl[0], rl[1], 10, all_skills)
             elif (jb == 'INDEED'):
@@ -104,7 +107,7 @@ def generate_job_board_role_mp(user_job_board_list, user_info):
     return job_board_role_mp
 
 
-def send_mail(user_jobs, user_info):
+def send_mail(user_jobs, user_info, user_skills):
     port = 587
     smtp_server = "smtp.gmail.com"
     login = "srijas.alerts@gmail.com"
@@ -126,7 +129,8 @@ def send_mail(user_jobs, user_info):
         temp_body = ""
         html_start = """<html><head></head><body><p><ol>"""
         for job in jobs:
-            temp_body += "<li>" + job['title'] + "<a href=\"" + job['url'] + "\"> Click to Apply </a>"
+            temp_body += "<li>" + job['title'] + "<a href=\"" + job['url'] + "\"> Click to Apply </a><br>"
+            temp_body += "Matching Skills: " + helper.print_matching_skills(user_skills[user], job['skills'])
         html_end = """</ol></p></body> </html>"""
 
         html = html_start + temp_body + html_end
