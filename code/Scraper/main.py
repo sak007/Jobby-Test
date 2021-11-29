@@ -130,6 +130,7 @@ def send_mail(user_jobs, user_info, user_skills):
         html_start = """<html><head></head><body><p><ol>"""
         for job in jobs:
             temp_body += "<li>" + job['title'] + "<a href=\"" + job['url'] + "\"> Click to Apply </a><br>"
+            temp_body += "Match Percentage: " + helper.match_percentage(user_skills[user], job['skills']) + "<br>"
             temp_body += "Matching Skills: " + helper.print_matching_skills(user_skills[user], job['skills'])
         html_end = """</ol></p></body> </html>"""
 

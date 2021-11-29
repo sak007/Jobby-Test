@@ -41,6 +41,10 @@ def matching_skills(skills1, skills2):
     return list(set(skills1) & set(skills2))
 
 
+def match_percentage(user_skills, job_skills):
+    return str(round((len(matching_skills(user_skills, job_skills)) / len(job_skills)) * 100, 2)) + "%"
+
+
 def print_matching_skills(skills1, skills2):
     return ', '.join(matching_skills(skills1, skills2))
 
