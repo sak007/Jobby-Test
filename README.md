@@ -22,6 +22,7 @@
 
 
 ## Phase 3
+Introducting Jobby, your friendly Job aggregator. Jobby would do anything for you, and we mean it.
 ![](https://media.giphy.com/media/12df9hrmdliYc8/giphy.gif)
 
 
@@ -80,6 +81,8 @@ This will install all the required packages from requirements.txt and create a p
   * To run the scheduler -> execute start_server.sh
 
 6. You should be good to start working on the application now.
+
+![Success](https://tenor.com/view/success-kid-hells-yes-i-did-it-fuck-yeah-success-gif-5207407.gif)
 
 ## Testing
 

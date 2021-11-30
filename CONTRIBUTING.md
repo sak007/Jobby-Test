@@ -10,8 +10,8 @@ If you want to raise an issue, first, please do check out the existing issues to
 <br></br>
 ### Table of Contents
 
-S.No. | Section 
------ | ------- 
+S.No. | Section
+----- | -------
 1 | [Welcome!](#welcome!)
 2 | [How to Contribute?](#How-to-Contribute)
 3 | [More things to consider with a PR](#Some-other-things-to-consider-when-merging-a-pull-request)
@@ -20,8 +20,8 @@ S.No. | Section
 6 | [Credit](#Credit-for-the-CONTRIBUTING-file)
 
 <br></br>
-### Welcome! 
-We’re glad to see you are interested in contributing. We hope to build a community around developing this project and helping as many people as possible. 
+### Welcome!
+We’re glad to see you are interested in contributing. We hope to build a community around developing this project and helping as many people as possible.
 
 The following are guidelines that we feel will nudge developers toward correct choices while making contributions. Feel free to point out anything that could be improved/changed in a pull request.
 
@@ -32,7 +32,7 @@ The following are guidelines that we feel will nudge developers toward correct c
 To contribute, please issue a pull request using the following procedure:
 1. Make sure that any install or build dependencies are removed before the layer end while doing a build.
 
-2. Update the README.md with the appropriate changes to the interface, such as a change in the environment variables, an update in version number. Also, update navigation changes such as file location changes and dependency changes to the readme. 
+2. Update the README.md with the appropriate changes to the interface, such as a change in the environment variables, an update in version number. Also, update navigation changes such as file location changes and dependency changes to the readme.
 
 3. Make sure to document any changes/additions you make to packages or libraries that need to be installed, since all of the commands to install new packages have to be run any time a new server instance is created.
 
@@ -48,7 +48,7 @@ To contribute, please issue a pull request using the following procedure:
 
 * Ensure that it is of good quality. The language should be clear and concise without any spelling or grammar mistakes.
 
-* Make sure that any contribution of any sort follows the code of conduct. Our repository has a [code of conduct](https://github.com/ineelshah/SRIJAS/blob/main/CODE_OF_CONDUCT.md) and any pull request that does not respect these will be appropriately removed.
+* Make sure that any contribution of any sort follows the code of conduct. Our repository has a [code of conduct](https://github.com/sak007/Jobby/blob/main/CODE_OF_CONDUCT.md) and any pull request that does not respect these will be automatically denied.
 
 <br></br>
 ### Where to Contribute
@@ -69,31 +69,13 @@ You can contribute in the following ways to our code:
 * Open an issue
   * If you see any visible problems/areas that you consider being an issue, open an issue and one of the developers will connect with you to discuss it in further detail.
 
+* Check our Future Enhancement Project
+  * We've listed out few issues, which we plan to implement in the future. If you feel like you can contribute to one of them, add a comment under the Issue and fork the repository.
+
 <br></br>
 ### Setting up a development environment
-You can do this in 2 ways:
-1. Install Xampp and Selenium on your local device
-* Windows:
-  * https://www.apachefriends.org/xampp-files/8.0.10/xampp-windows-x64-8.0.10-0-VS16-installer.exe
-* MacOS:
-  * https://www.apachefriends.org/xampp-files/8.0.10/xampp-osx-8.0.10-0-vm.dmg
-* Linux:
-  * https://www.apachefriends.org/xampp-files/8.0.10/xampp-linux-x64-8.0.10-0-installer.run
-
-Download Selenium: https://www.selenium.dev/downloads/
-
-2. Clone the repository to your device.
-
-3. Copy the web_app folder to your local htdocs folder and proceed!
-
-###OR
-
-1. Run an AWS EC2 instance
-
-2. Install Apache, Selenium, and MySql
-
-3. Clone the repository to root and copy the web_app folder to /var/www/html/.
-
+- Setup instructions given under [Installation Guide](https://github.com/sak007/Jobby/tree/documentation#-installation-guide) in [README.md](https://github.com/sak007/Jobby/blob/main/README.md)
+- Follow the steps as mentioned and
 **You’re all set!**
 <br></br>
 ![Success](https://tenor.com/view/success-kid-hells-yes-i-did-it-fuck-yeah-success-gif-5207407.gif)
