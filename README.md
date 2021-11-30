@@ -122,4 +122,4 @@ coverage report
   * Rithik Jain (rjain25@ncsu.edu)
   * Sri Athithya Kruth Babu (sbabu@ncsu.edu)
   * Subramanian Venkatraman (svenka25@ncsu.edu)
-  * Zunaid Sorathiya (zhsoarth@ncsu.edu)
+  * Zunaid Sorathiya (zhsorath@ncsu.edu)
