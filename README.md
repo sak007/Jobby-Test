@@ -8,7 +8,7 @@
 
 [![Github pull requests](https://img.shields.io/github/issues-pr/sak007/Jobby)](https://github.com/sak007/Jobby/pulls)
 [![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/sak007/Jobby)](https://github.com/sak007/Jobby/pulls?q=is%3Apr+is%3Aclosed)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646667.svg)](https://doi.org/10.5281/zenodo.5646667)
+[![DOI](https://zenodo.org/badge/426291746.svg)](https://zenodo.org/badge/latestdoi/426291746)
 
 [![version](https://img.shields.io/badge/version-3.0-blue)](https://github.com/sak007/Jobby/releases/tag/v3.0)
 [![Build Status](https://circleci.com/gh/sak007/Jobby/tree/main.svg?style=svg)](https://circleci.com/gh/sak007/Jobby/tree/main)
