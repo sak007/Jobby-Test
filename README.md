@@ -44,7 +44,9 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 7. [Team Members](https://github.com/sak007/Jobby/tree/documentation#team-members)
 
 ## Working Demo
-To add working GIF --> TBD
+
+https://user-images.githubusercontent.com/28624935/143986517-158d58bf-e920-431f-9170-33ea5e8ff292.mp4
+
 
 ## What's new? (Delta, New Features)
 - Code Refactoring: Modularization the codebase. We reconfigured the database and implemented casecading features to simplify operations. Also, we split the functionalities into multiple files to create modularity and reduce single source of failure.
