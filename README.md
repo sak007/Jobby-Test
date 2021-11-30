@@ -45,7 +45,7 @@ https://user-images.githubusercontent.com/28624935/143986517-158d58bf-e920-431f-
 
 
 ## What's new? (Delta, New Features)
-- Code Refactoring: Modularization the codebase. We reconfigured the database and implemented casecading features to simplify operations. Also, we split the functionalities into multiple files to create modularity and reduce single source of failure.
+- Code Refactoring: Modularization the codebase. We reconfigured the database and implemented cascading features to simplify operations. Also, we split the functionalities into multiple files to create modularity and reduce single source of failure.
 
 - New Job Boards: We added scraping features to new Job Boards - Indeed, Monster, GoinGlobal and Simplyhired. Even though the previous iteration had 2 popular job boards, we decided to increase the search space in order to contribute an adequate number of roles for user's perusal and also provide sheer variety to the Job search space.
 
