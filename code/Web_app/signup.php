@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="author" content="Group-32, Fall 2021">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>S.R.I.J.A.S - Register</title>
+	<title>JOBBY - Signup</title>
   <?php
   /**
      * This segment of code is responsible for loading entries from the job_master
