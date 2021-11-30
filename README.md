@@ -23,6 +23,7 @@
 
 ## Phase 3
 Introducting Jobby, your friendly Job aggregator. Jobby would do anything for you, and we mean it.
+
 ![](https://media.giphy.com/media/12df9hrmdliYc8/giphy.gif)
 
 
@@ -32,6 +33,15 @@ With Jobby, you can upload your resume and job which you want to search for. The
 The portal links of the jobs that matches with your skills, will be sent to you via email everyday at **10:30am EST**. You'll never miss another job posting.
 
 This is our submission for the Project for Software Engineering CSC 510 Fall 2021.
+
+# Contents
+1. [Working Demo](https://github.com/sak007/Jobby/tree/documentation#working-demo)
+2. [What's new? (Delta, New Features)](https://github.com/sak007/Jobby/tree/documentation#whats-new-delta-new-features)
+3. [Work for the upcoming iteration](https://github.com/sak007/Jobby/tree/documentation#work-for-the-upcoming-iteration)
+4. [Installation Guide](https://github.com/sak007/Jobby/tree/documentation#-installation-guide)
+5. [Testing](https://github.com/sak007/Jobby/tree/documentation#testing)
+6. [Code Coverage](https://github.com/sak007/Jobby/tree/documentation#code-coverage)
+7. [Team Members](https://github.com/sak007/Jobby/tree/documentation#team-members)
 
 ## Working Demo
 To add working GIF --> TBD
@@ -70,7 +80,9 @@ This will install all the required packages from requirements.txt and create a p
 
 4. You can either choose to host the project on any online hosting platform or use an application to test the application locally. We used two applications -> XAMPP and MAMP Pro
   * If you wish to use MAMP Pro, follow the instructions given here. (Link - Ashok)
-  * If you wish to use XAMPP, download the application and click on the Config button (see picture below - TBD)
+  * If you wish to use XAMPP, download the application and click on the Config button (see picture below)
+   <img width="607" alt="xampp-conf" src="https://user-images.githubusercontent.com/28624935/143979475-f2d4b1d6-297c-43ff-8cb5-d243e59ebc57.png">
+   
   * Click the Apache(httpd.conf) file and add the your project's directory under "DocumentRoot:"
   ```
     DocumentRoot ".../Jobby/Code/Web_app"
@@ -88,7 +100,7 @@ This will install all the required packages from requirements.txt and create a p
 
 We use pytest to perform testing on all unit tests together. The command needs to be run from the home directory of the project. The command is:
 ```
-python run -m pytest test/
+python -m pytest test/
 ```
 
 ## Code Coverage
