@@ -31,13 +31,13 @@ The portal links of the jobs that matches with your skills, will be sent to you 
 This is our submission for the Project for Software Engineering CSC 510 Fall 2021.
 
 # Contents
-1. [Working Demo](https://github.com/sak007/Jobby/tree/documentation#working-demo)
-2. [What's new? (Delta, New Features)](https://github.com/sak007/Jobby/tree/documentation#whats-new-delta-new-features)
-3. [Work for the upcoming iteration](https://github.com/sak007/Jobby/tree/documentation#work-for-the-upcoming-iteration)
-4. [Installation Guide](https://github.com/sak007/Jobby/tree/documentation#-installation-guide)
-5. [Testing](https://github.com/sak007/Jobby/tree/documentation#testing)
-6. [Code Coverage](https://github.com/sak007/Jobby/tree/documentation#code-coverage)
-7. [Team Members](https://github.com/sak007/Jobby/tree/documentation#team-members)
+1. [Working Demo](https://github.com/sak007/Jobby/tree/main#working-demo)
+2. [What's new? (Delta, New Features)](https://github.com/sak007/Jobby/tree/main#whats-new-delta-new-features)
+3. [Work for the upcoming iteration](https://github.com/sak007/Jobby/tree/main#work-for-the-upcoming-iteration)
+4. [Installation Guide](https://github.com/sak007/Jobby/tree/main#-installation-guide)
+5. [Testing](https://github.com/sak007/Jobby/tree/main#testing)
+6. [Code Coverage](https://github.com/sak007/Jobby/tree/main#code-coverage)
+7. [Team Members](https://github.com/sak007/Jobby/tree/main#team-members)
 
 ## Working Demo
 
