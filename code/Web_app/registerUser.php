@@ -340,6 +340,7 @@ if(count($_POST)>1){
   $location = $_POST["location"];
   $password = $_POST["password"];
 
+  $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 
 
   $target_dir = "uploads/";
@@ -367,7 +368,7 @@ if(count($_POST)>1){
 }
 
 try{
-  executer($inputName, $inputEmail, $location, $inputJobTypeId, $target_file, $password);
+  executer($inputName, $inputEmail, $location, $inputJobTypeId, $target_file, $hashedPass);
 }catch(Exception $e){
   echo "Code did not execute - caught exception in function call->function executer: ".$e->getMessage()."<br>";
 }
