@@ -75,6 +75,7 @@ https://user-images.githubusercontent.com/28624935/143986517-158d58bf-e920-431f-
   or
   * **Create a MySQL instance in AWS**
     + [Installation instruction AWS](https://www.youtube.com/watch?v=Ng_zi11N4_c)
+- Execute srijas.sql file in the created db
 - Update your DB credentials in the db.properties.template file.
 - Provide executable permissions for setup.sh and execute the file.
 This will install all the required packages from requirements.txt and create a parameters.json file which is required for accessing the DB.
