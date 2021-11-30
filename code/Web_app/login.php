@@ -48,11 +48,6 @@
                   <button type="submit" name="submit" class="btn btn-primary ms-auto"> Login </button>
                   </div>
                 </div>
-              <div class="card-footer py-3 border-0">
-                <div class="text-center">
-                  Don't have an account? <a href="signup.php" class="text-dark">Create One</a>
-                </div>
-              </div>
               </form>
               <?php
                if(isset($_POST['submit']) && ($_POST['inputEmail'] != "") && ($_POST['password'] != "")){
@@ -60,16 +55,23 @@
                 $result = $conn->query($sql);
                 $row = $result->fetch_assoc();
                 $len = $result->num_rows;
-                if (($len == 1) && ($row["user_pwd"] == $_POST['password'])) {
+                $checkPwd = password_verify($_POST['password'], $row["user_pwd"]);
+                if (($len == 1) && ($checkPwd))
+                {
                     $_SESSION['user'] = $_POST['inputEmail'];
                     header('Location: home.php');
                 }
                 else {
-                  echo '<span style="color:#FF0000"> Invalid Email/Password </span><br/>';
+                  echo '<span class="text-center" style="color:#FF0000"> Invalid Email/Password </span><br/>';
                 }
                 $conn->close();
               }
               ?>
+              <div class="card-footer py-3 border-0">
+                <div class="text-center">
+                  Don't have an account? <a href="signup.php" class="text-dark">Create One</a>
+                </div>
+              </div>
             </div>
 <!-- Here, we add a link to a useful resource for job searches-->
 <!-- <div class="container h-100">
