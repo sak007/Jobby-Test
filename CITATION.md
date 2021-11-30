@@ -6,10 +6,10 @@ The project can be cited using the following link: https://doi.org/10.5281/zenod
 # BibTeX
 
 ```bibtex
-@article{Group39:Project 2,
-	title 	  = {SRIJAS},
+@article{Group32:Project 3,
+	title 	  = {JOBBY},
 	DOI 	  = {10.5281/zenodo.5646667},
-	author    = {Gokul Koganti, Rachana Kondabala, Harikrishna Selvaraj, Kiran Bharadwaj, Smayana Pidugu},
+	author    = {Ashok Kumar Selvam, Rithik Jain, Sri Athithya Kruth Babu, Subramanian Venkataraman, Zunaid Sorathiya},
 	publisher = {Zenodo},
 	year      = {2021},
 	month     = {November}
