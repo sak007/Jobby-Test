@@ -25,7 +25,7 @@ CREATE TABLE user_master (
   user_fname varchar(50) NOT NULL,
   user_lname varchar(50) DEFAULT NULL,
   user_email varchar(50) NOT NULL UNIQUE,
-  user_pwd varchar(50) NOT NULL,
+  user_pwd varchar(255) NOT NULL,
   location varchar(50) DEFAULT NULL,
   user_preferred_job_id int NOT NULL,
   FOREIGN KEY (user_preferred_job_id) REFERENCES job_master (job_id) on delete cascade
