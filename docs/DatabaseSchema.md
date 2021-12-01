@@ -10,3 +10,6 @@ The schema is described in the following diagram.
 
 #Script
 - We used dbConnect.py file to facilitate the connection between the Web App and database.
+
+
+![Jobby ER Diagram](https://user-images.githubusercontent.com/28535703/144179451-677dd9b5-cfdc-4439-9a9b-1703da3ff771.png)
