@@ -2,7 +2,7 @@
 This file contains code for the monster scraper file in Jobby. The main function of this file is scrape the job board website, monster [https://www.monster.com/](https://www.monster.com/).
 
 # Location of Code for this Feature
-The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/documentation/code/Scraper/monster_scraper.py)
+The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/main/code/Scraper/monster_scraper.py)
 
 # Code Description
 ## Functions

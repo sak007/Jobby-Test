@@ -2,7 +2,7 @@
 This file contains code for the helper.py module in Jobby. The main function of this file is to simplify the execution of common tasks from scrapers and the main functions such as connecting to the database, getting skills for users, getting all skills etc.
 
 # Location of Code for this Feature
-The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/documentation/code/Scraper/helper.py)
+The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/main/code/Scraper/helper.py)
 
 # Code Description
 ## Functions
