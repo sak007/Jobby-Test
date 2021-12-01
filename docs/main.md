@@ -2,7 +2,7 @@
 This file contains code for the main.py file in Jobby. This file runs all scrapers and handles the main processing in the back end.
 
 # Location of Code for this Feature
-The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/documentation/code/Scraper/main.py)
+The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/main/code/Scraper/main.py)
 
 # Code Description
 ## Functions

@@ -2,7 +2,7 @@
 This file contains code for the scheduled_notifier file in Jobby. The main purpose of this file is schedule daily runs of the main.py module so that daily job alerts are sent out to users.
 
 # Location of Code for this Feature
-The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/documentation/code/Scraper/scheduled_notifier.py)
+The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/main/code/Scraper/scheduled_notifier.py)
 
 # Code Description
 
