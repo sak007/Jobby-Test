@@ -2,7 +2,7 @@
 This file contains code for the global scraper in Jobby. The main function of this file is scrape the job board website, [https://www.goinglobal.com/](https://www.goinglobal.com/).
 
 # Location of Code for this Feature
-The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/documentation/code/Scraper/going_global_scraper.py)
+The code that implements this feature can be found [here](https://github.com/sak007/Jobby/blob/main/code/Scraper/going_global_scraper.py)
 
 # Code Description
 ## Functions
