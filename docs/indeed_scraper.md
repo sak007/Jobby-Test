@@ -1,4 +1,4 @@
-# About Jobby's going_global_scraper.py File
+# About Jobby's indeed_scraper.py File
 This file contains code for the indeed scraper file in Jobby. The main function of this file is scrape the job board website, indeed [https://www.indeed.com/](https://www.indeed.com/).
 
 # Location of Code for this Feature
